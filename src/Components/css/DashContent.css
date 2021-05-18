@@ -1,0 +1,44 @@
+.navShow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mainHeader {
+  border-bottom: 0.5rem solid #1b193f;
+}
+
+.learningHeader {
+  border-top: 0.5rem solid #1b193f;
+}
+.learningPaper {
+  background-image: url("https://image.freepik.com/free-photo/mug-with-pencils-ruler-table_23-2147929699.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dashboard__content .heading {
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.dashboard__content .menuShow {
+  font-family: "Pacifico", cursive;
+}
+.appBar,
+.courseBtn {
+  background-image: url(../../img/backGrad.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.MuiBox-root {
+  padding: 2rem 0 !important;
+}
+
+@media (max-width: 780px) {
+  .navShowFont {
+    font-size: 0.7rem;
+  }
+}
