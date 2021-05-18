@@ -1,0 +1,9 @@
+type Link {
+  name: String!
+  email: String!
+  current: String!
+  future: String!
+}
+type Query {
+  allLinks: [Link!]!
+}

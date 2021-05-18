@@ -33,20 +33,20 @@ const Sidebar = () => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  // const signOut = (e) => {
-  //   e.preventDefault();
-  //   auth
-  //     .signOut()
-  //     .then((result) => {
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: result,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // };
+  const signOut = (e) => {
+    e.preventDefault();
+    // auth
+    //   .signOut()
+    //   .then((result) => {
+    //     dispatch({
+    //       type: "SET_USER",
+    //       user: result,
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     alert(error);
+    //   });
+  };
 
   return (
     <div className="sidebar">
@@ -80,10 +80,9 @@ const Sidebar = () => {
             horizontal: "center",
           }}
         >
-          {/* <Button onClick={signOut} className="logoutBtn p-2">
+          <Button onClick={signOut} className="logoutBtn p-2">
             Logout
-          </Button> */}
-          {/* <Logout /> */}
+          </Button>
         </Popover>
       </div>
 
