@@ -2,7 +2,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import "./css/dashpro.css";
 import "./css/DashContent.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import HomeTabs from "./HomeTabs";
 // import logo from "../img/logo.png";
 import Button from "@material-ui/core/Button";
@@ -11,29 +11,8 @@ import TextField from "@material-ui/core/TextField";
 export default function Dashboard() {
   const [current, setCurrent] = useState("");
   const [future, setFuture] = useState("");
-  const [designation, setDesignation] = useState([]);
-
-  const loadLinks = async () => {
-    const res = await fetch("/.netlify/functions/getLinks");
-    const links = await res.json();
-    setDesignation(links);
-  };
-  useEffect(() => {
-    loadLinks();
-  }, []);
-
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    // updating code mising // working // not complete
-    try {
-      await fetch("/.netlify/functions/updateLink", {
-        method: "PUT",
-        body: JSON.stringify(designation),
-      });
-      // refreshLinks();
-    } catch (err) {
-      console.error(err);
-    }
   };
   return (
     <>
@@ -65,23 +44,15 @@ export default function Dashboard() {
             <Paper className="learning learningHeader p-3">
               <h6 className="typo">My Learning Profile</h6>
               <br />
-              {designation.map((des) => (
-                <>
-                  <h6 className="" key={des._id}>
-                    I am currently a/an <strong>{des.current}</strong>
-                  </h6>
-                </>
-              ))}
-              <br />
-              {designation.map((des) => (
-                <>
-                  <h6 className="" key={des._id}>
-                    I want to become a/an <strong>{des.future}</strong>
-                  </h6>
-                </>
-              ))}
-              <br />
+              <h6 className="">
+                I am currently a/an <strong>Front End Developer</strong>
+              </h6>
 
+              <br />
+              <h6 className="">
+                I want to become a/an <strong>JAM Stack Developer</strong>
+              </h6>
+              <br />
               <Button
                 data-toggle="modal"
                 data-target="#profileModal"
