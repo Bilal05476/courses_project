@@ -1,20 +1,21 @@
 import firebase from "firebase/app";
-import "firebase/auth";
-//ecommstore
+import "@firebase/auth";
+import "@firebase/firestore";
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseApp = firebase.initializeApp({
-  apiKey:`${process.env.API_KEY}`,
-  authDomain: `${process.env.AUTH_DOMAIN}`,
-  projectId: "ecommstore-55",
-  storageBucket: "ecommstore-55.appspot.com",
-  messagingSenderId: "934453280015",
-  appId: `${process.env.APP_ID}`,
-  measurementId: "G-D6XK2LX3BW",
+  apiKey: "hello",
+  authDomain: "batechnos.firebaseapp.com",
+  databaseURL: "https://batechnos.firebaseio.com",
+  projectId: "batechnos",
+  storageBucket: "hello",
+  messagingSenderId: "322110694598",
+  appId: "hello",
+  measurementId: "G-XZ07ZGEJ18",
 });
 
 //for authentication connect witth google, (login, sign up)
 const auth = firebaseApp.auth();
-// const db = firebaseApp.firestore();
-const provider = new firebase.auth.GoogleAuthProvider();
+const db = firebaseApp.firestore();
 
-export { auth, provider };
+export { auth, db };

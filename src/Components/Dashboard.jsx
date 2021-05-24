@@ -2,18 +2,37 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import "./css/dashpro.css";
 import "./css/DashContent.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { auth, db } from "../Firebase";
+import { useStateValue } from "../StateProvider";
 import HomeTabs from "./HomeTabs";
 // import logo from "../img/logo.png";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 export default function Dashboard() {
+  const [{ user }] = useStateValue();
   const [current, setCurrent] = useState("");
   const [future, setFuture] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
   };
+
+  const currentOcc = document.querySelector(".current");
+  const futureOcc = document.querySelector(".future");
+
+  useEffect(
+    () =>
+      db
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          currentOcc.innerHTML = `${doc.data().currentOcc}`;
+          futureOcc.innerHTML = `${doc.data().futureOcc}`;
+        }),
+    [user]
+  );
   return (
     <>
       <div className="dashboard__content">
@@ -45,12 +64,12 @@ export default function Dashboard() {
               <h6 className="typo">My Learning Profile</h6>
               <br />
               <h6 className="">
-                I am currently a/an <strong>Front End Developer</strong>
+                I am currently a/an <strong className="current"></strong>
               </h6>
 
               <br />
               <h6 className="">
-                I want to become a/an <strong>JAM Stack Developer</strong>
+                I want to become a/an <strong className="future"></strong>
               </h6>
               <br />
               <Button

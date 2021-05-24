@@ -8,9 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import Popover from "@material-ui/core/Popover";
 import { NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import { useState } from "react";
-// import { auth } from "../Firebase";
-// import { useStateValue } from "./StateProvider";
+import { useState, useEffect } from "react";
+import { auth, db } from "../Firebase";
+import { useStateValue } from "../StateProvider";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
@@ -19,12 +19,24 @@ import TelegramIcon from "@material-ui/icons/Telegram";
 import "./css/sidebar.css";
 
 const Sidebar = () => {
-  // const [{ user }, dispatch] = useStateValue();
-
+  const [{ user }, dispatch] = useStateValue();
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const studentDetails = document.querySelector(".studentName");
+  useEffect(
+    () =>
+      db
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          studentDetails.innerHTML = `<div>${doc.data().name}</div>`;
+        }),
+    [user]
+  );
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -35,17 +47,17 @@ const Sidebar = () => {
 
   const signOut = (e) => {
     e.preventDefault();
-    // auth
-    //   .signOut()
-    //   .then((result) => {
-    //     dispatch({
-    //       type: "SET_USER",
-    //       user: result,
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     alert(error);
-    //   });
+    auth
+      .signOut()
+      .then((result) => {
+        dispatch({
+          type: "SET_USER",
+          user: result,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (
@@ -58,7 +70,7 @@ const Sidebar = () => {
           src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
           alt="userphoto"
         />
-        <h6>Guest</h6>
+        <div className="studentName"></div>
         <Button
           style={{ outline: "none" }}
           aria-describedby={id}
