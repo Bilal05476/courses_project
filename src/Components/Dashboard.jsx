@@ -12,9 +12,12 @@ import TextField from "@material-ui/core/TextField";
 
 export default function Dashboard() {
   const [{ user }] = useStateValue();
+  const [currently, setCurrently] = useState("");
+  const [futuree, setFuturee] = useState("");
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
-  const dataMessage = document.querySelectorAll(".message");
+  const [dataSMessage, setDataSMessage] = useState("");
+  const [dataFMessage, setDataFMessage] = useState("");
   const getOccupation = db.collection("users").doc(user.uid);
 
   const onSubmit = async (e) => {
@@ -25,37 +28,21 @@ export default function Dashboard() {
         futureOcc: updateFuture,
       })
       .then(() => {
-        dataMessage.innerHTML = `<div>Profile successfully updated :)</div> `;
+        setDataSMessage("Profile successfully updated !");
       })
       .catch((error) => {
         // The document probably doesn't exist.
-        dataMessage.innerHTML = `<div>Error updating profile :( ${error}</div>`;
+        setDataFMessage(`Error updating profile ! ${error}`);
       });
   };
 
-  const currentOccupation = document.querySelector(".current");
-  const futureOccupation = document.querySelector(".future");
+  useEffect(() => {
+    return getOccupation.get().then((doc) => {
+      setCurrently(doc.data().currentOcc);
+      setFuturee(doc.data().futureOcc);
+    });
+  }, [user, onSubmit]);
 
-  useEffect(async () => {
-    try {
-      await getOccupation.get().then((doc) => {
-        currentOccupation.innerHTML = `${doc.data().currentOcc}`;
-        futureOccupation.innerHTML = `${doc.data().futureOcc}`;
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }, [getOccupation, user]);
-
-  // useEffect(() => {
-  //   db.collection("users")
-  //     .doc(user.uid)
-  //     .get()
-  //     .then((doc) => {
-  //       currentOccupation.innerHTML = doc.data().currentOcc;
-  //       futureOccupation.innerHTML = doc.data().futureOcc;
-  //     });
-  // }, [user, getOccupation]);
   return (
     <>
       <div className="dashboard__content">
@@ -87,12 +74,14 @@ export default function Dashboard() {
               <h6 className="typo">My Learning Profile</h6>
               <br />
               <h6 className="">
-                I am currently a/an <strong className="current"></strong>
+                I am currently a/an{" "}
+                <strong className="current">{currently}</strong>
               </h6>
 
               <br />
               <h6 className="">
-                I want to become a/an <strong className="future"></strong>
+                I want to become a/an{" "}
+                <strong className="future">{futuree}</strong>
               </h6>
               <br />
               <Button
@@ -132,8 +121,12 @@ export default function Dashboard() {
                       </button>
                     </div>
                     <div className="modal-body">
-                      <div className="message bg-success text-light px-2"></div>
-                      <div className="message bg-danger text-light px-2"></div>
+                      <div className="message bg-success text-light px-2">
+                        {dataSMessage} 🙂
+                      </div>
+                      <div className="message bg-danger text-light px-2">
+                        {dataFMessage}
+                      </div>
                       <form
                         onSubmit={onSubmit}
                         noValidate

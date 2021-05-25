@@ -20,35 +20,18 @@ import "./css/sidebar.css";
 
 const Sidebar = () => {
   const [{ user }, dispatch] = useStateValue();
+  const [userName, setUserName] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const userName = document.querySelector(".studentName");
-  const getUserName = db.collection("users").doc(user.uid).get();
-
-  useEffect(async () => {
-    try {
-      await getUserName.get().then((doc) => {
-        userName.innerHTML = `<div>${doc.data().name}</div>`;
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }, [getUserName, user]);
-
-  // useEffect(
-  //   () =>
-  //     db
-  //       .collection("users")
-  //       .doc(user.uid)
-  //       .get()
-  //       .then((doc) => {
-  //         userName.innerHTML = `<div>${doc.data().name}</div>`;
-  //       }),
-  //   [user]
-  // );
+  const getUserName = db.collection("users").doc(user.uid);
+  useEffect(() => {
+    return getUserName.get().then((doc) => {
+      setUserName(doc.data().name);
+    });
+  }, [user]);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -82,7 +65,7 @@ const Sidebar = () => {
           src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
           alt="userphoto"
         />
-        <div className="studentName">{user ? "" : " "}</div>
+        <div className="studentName">{userName}</div>
         <Button
           style={{ outline: "none" }}
           aria-describedby={id}
