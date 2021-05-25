@@ -28,11 +28,13 @@ export default function Dashboard() {
         futureOcc: updateFuture,
       })
       .then(() => {
-        setDataSMessage("Profile successfully updated !");
+        setDataSMessage("Profile successfully updated! 🙂");
+        setUpdateCurrent("");
+        setUpdateFuture("");
       })
       .catch((error) => {
         // The document probably doesn't exist.
-        setDataFMessage(`Error updating profile ! ${error}`);
+        setDataFMessage(`Error updating profile! ${error}`);
       });
   };
 
@@ -40,8 +42,10 @@ export default function Dashboard() {
     return getOccupation.get().then((doc) => {
       setCurrently(doc.data().currentOcc);
       setFuturee(doc.data().futureOcc);
+      setDataFMessage("");
+      setDataSMessage("");
     });
-  }, [user, onSubmit]);
+  }, [user, getOccupation]);
 
   return (
     <>
@@ -122,7 +126,7 @@ export default function Dashboard() {
                     </div>
                     <div className="modal-body">
                       <div className="message bg-success text-light px-2">
-                        {dataSMessage} 🙂
+                        {dataSMessage}
                       </div>
                       <div className="message bg-danger text-light px-2">
                         {dataFMessage}
