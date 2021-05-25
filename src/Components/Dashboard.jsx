@@ -14,12 +14,26 @@ export default function Dashboard() {
   const [{ user }] = useStateValue();
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
+  const dataMessage = document.querySelectorAll(".message");
   const onSubmit = (e) => {
     e.preventDefault();
+    const updateValues = db.collection("users").doc(user.uid);
+    return updateValues
+      .update({
+        currentOcc: updateCurrent,
+        futureOcc: updateFuture,
+      })
+      .then(() => {
+        dataMessage.innerHTML = `<div>Profile successfully updated :)</div> `;
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        dataMessage.innerHTML = `<div>Error updating profile :( ${error}</div>`;
+      });
   };
 
-  const currentOccu = document.querySelector(".current");
-  const futureOccu = document.querySelector(".future");
+  const currentOccupation = document.querySelector(".current");
+  const futureOccupation = document.querySelector(".future");
 
   useEffect(
     () =>
@@ -28,8 +42,8 @@ export default function Dashboard() {
         .doc(user.uid)
         .get()
         .then((doc) => {
-          currentOccu.innerHTML = `${doc.data().currentOcc}`;
-          futureOccu.innerHTML = `${doc.data().futureOcc}`;
+          currentOccupation.innerHTML = `${doc.data().currentOcc}`;
+          futureOccupation.innerHTML = `${doc.data().futureOcc}`;
         }),
     [user]
   );
@@ -109,6 +123,8 @@ export default function Dashboard() {
                       </button>
                     </div>
                     <div className="modal-body">
+                      <div className="message bg-success text-light px-2"></div>
+                      <div className="message bg-danger text-light px-2"></div>
                       <form
                         onSubmit={onSubmit}
                         noValidate
@@ -131,12 +147,12 @@ export default function Dashboard() {
                         />
                         <div className="modal-footer">
                           <Button
-                            data-dismiss="modal"
                             variant="contained"
                             className="courseBtn text-light"
                             style={{
                               outline: "none",
                             }}
+                            type="submit"
                           >
                             Save Changes
                           </Button>

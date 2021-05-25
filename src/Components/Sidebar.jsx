@@ -25,7 +25,7 @@ const Sidebar = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const studentDetails = document.querySelector(".studentName");
+  const userName = document.querySelector(".studentName");
   useEffect(
     () =>
       db
@@ -33,8 +33,7 @@ const Sidebar = () => {
         .doc(user.uid)
         .get()
         .then((doc) => {
-          studentDetails.innerHTML = `<div>${doc.data().name}</div>`;
-          console.log(studentDetails);
+          userName.innerHTML = `<div>${doc.data().name}</div>`;
         }),
     [user]
   );
