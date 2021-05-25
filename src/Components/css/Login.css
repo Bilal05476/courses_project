@@ -221,10 +221,12 @@ body.light section .container .user .formBx input[type="submit"] {
   }
 }
 
-.loginerror, .signerror{
+.loginerror,
+.signerror {
   color: #fff;
-  transition: .5s;
+  transition: 0.5s;
   background: crimson;
-  padding: .2rem;
-  border-radius: .2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.2rem;
 }

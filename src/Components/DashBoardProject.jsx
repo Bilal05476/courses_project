@@ -12,7 +12,6 @@ import { useStateValue } from "../StateProvider";
 
 const DashBoardProject = () => {
   const [{ user }] = useStateValue();
-  console.log(user);
   return (
     <>
       {!user ? (

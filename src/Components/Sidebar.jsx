@@ -26,17 +26,29 @@ const Sidebar = () => {
   };
 
   const userName = document.querySelector(".studentName");
-  useEffect(
-    () =>
-      db
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          userName.innerHTML = `<div>${doc.data().name}</div>`;
-        }),
-    [user]
-  );
+  const getUserName = db.collection("users").doc(user.uid).get();
+
+  useEffect(async () => {
+    try {
+      await getUserName.get().then((doc) => {
+        userName.innerHTML = `<div>${doc.data().name}</div>`;
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, [getUserName, user]);
+
+  // useEffect(
+  //   () =>
+  //     db
+  //       .collection("users")
+  //       .doc(user.uid)
+  //       .get()
+  //       .then((doc) => {
+  //         userName.innerHTML = `<div>${doc.data().name}</div>`;
+  //       }),
+  //   [user]
+  // );
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -70,7 +82,7 @@ const Sidebar = () => {
           src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
           alt="userphoto"
         />
-        <div className="studentName"></div>
+        <div className="studentName">{user ? "" : " "}</div>
         <Button
           style={{ outline: "none" }}
           aria-describedby={id}

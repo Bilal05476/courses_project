@@ -15,10 +15,11 @@ export default function Dashboard() {
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
   const dataMessage = document.querySelectorAll(".message");
-  const onSubmit = (e) => {
+  const getOccupation = db.collection("users").doc(user.uid);
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const updateValues = db.collection("users").doc(user.uid);
-    return updateValues
+    return getOccupation
       .update({
         currentOcc: updateCurrent,
         futureOcc: updateFuture,
@@ -35,18 +36,26 @@ export default function Dashboard() {
   const currentOccupation = document.querySelector(".current");
   const futureOccupation = document.querySelector(".future");
 
-  useEffect(
-    () =>
-      db
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          currentOccupation.innerHTML = `${doc.data().currentOcc}`;
-          futureOccupation.innerHTML = `${doc.data().futureOcc}`;
-        }),
-    [user]
-  );
+  useEffect(async () => {
+    try {
+      await getOccupation.get().then((doc) => {
+        currentOccupation.innerHTML = `${doc.data().currentOcc}`;
+        futureOccupation.innerHTML = `${doc.data().futureOcc}`;
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, [getOccupation, user]);
+
+  // useEffect(() => {
+  //   db.collection("users")
+  //     .doc(user.uid)
+  //     .get()
+  //     .then((doc) => {
+  //       currentOccupation.innerHTML = doc.data().currentOcc;
+  //       futureOccupation.innerHTML = doc.data().futureOcc;
+  //     });
+  // }, [user, getOccupation]);
   return (
     <>
       <div className="dashboard__content">
@@ -137,6 +146,7 @@ export default function Dashboard() {
                           className="my-2 py-2"
                           id="standard-basic"
                           label="I am currently a/an"
+                          required
                         />
                         <TextField
                           value={updateFuture}
@@ -144,6 +154,7 @@ export default function Dashboard() {
                           className="my-2 py-2"
                           id="standard-basic"
                           label="I want to become a/an"
+                          required
                         />
                         <div className="modal-footer">
                           <Button
