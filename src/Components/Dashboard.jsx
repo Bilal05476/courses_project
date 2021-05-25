@@ -12,14 +12,14 @@ import TextField from "@material-ui/core/TextField";
 
 export default function Dashboard() {
   const [{ user }] = useStateValue();
-  const [current, setCurrent] = useState("");
-  const [future, setFuture] = useState("");
+  const [updateCurrent, setUpdateCurrent] = useState("");
+  const [updateFuture, setUpdateFuture] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
   };
 
-  const currentOcc = document.querySelector(".current");
-  const futureOcc = document.querySelector(".future");
+  const currentOccu = document.querySelector(".current");
+  const futureOccu = document.querySelector(".future");
 
   useEffect(
     () =>
@@ -28,8 +28,8 @@ export default function Dashboard() {
         .doc(user.uid)
         .get()
         .then((doc) => {
-          currentOcc.innerHTML = `${doc.data().currentOcc}`;
-          futureOcc.innerHTML = `${doc.data().futureOcc}`;
+          currentOccu.innerHTML = `${doc.data().currentOcc}`;
+          futureOccu.innerHTML = `${doc.data().futureOcc}`;
         }),
     [user]
   );
@@ -116,15 +116,15 @@ export default function Dashboard() {
                         style={{ display: "flex", flexDirection: "column" }}
                       >
                         <TextField
-                          value={current}
-                          onChange={(e) => setCurrent(e.target.value)}
+                          value={updateCurrent}
+                          onChange={(e) => setUpdateCurrent(e.target.value)}
                           className="my-2 py-2"
                           id="standard-basic"
                           label="I am currently a/an"
                         />
                         <TextField
-                          value={future}
-                          onChange={(e) => setFuture(e.target.value)}
+                          value={updateFuture}
+                          onChange={(e) => setUpdateFuture(e.target.value)}
                           className="my-2 py-2"
                           id="standard-basic"
                           label="I want to become a/an"

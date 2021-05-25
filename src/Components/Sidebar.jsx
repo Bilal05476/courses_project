@@ -34,6 +34,7 @@ const Sidebar = () => {
         .get()
         .then((doc) => {
           studentDetails.innerHTML = `<div>${doc.data().name}</div>`;
+          console.log(studentDetails);
         }),
     [user]
   );

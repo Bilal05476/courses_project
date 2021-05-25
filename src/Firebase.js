@@ -4,14 +4,14 @@ import "@firebase/firestore";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseApp = firebase.initializeApp({
-  apiKey: "hello",
-  authDomain: "batechnos.firebaseapp.com",
-  databaseURL: "https://batechnos.firebaseio.com",
-  projectId: "batechnos",
-  storageBucket: "hello",
-  messagingSenderId: "322110694598",
-  appId: "hello",
-  measurementId: "G-XZ07ZGEJ18",
+  apiKey: `${process.env.REACT_APP_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  databaseURL: `${process.env.REACT_APP_DATABASE}`,
+  projectId: `${process.env.REACT_APP_PROJECTID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MESS}`,
+  appId: `${process.env.REACT_APP_APP_ID}`,
+  measurementId: `${process.env.REACT_APP_MEASID}`,
 });
 
 //for authentication connect witth google, (login, sign up)

@@ -7,27 +7,11 @@ import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import NotifiCompo from "./NotifiCompo";
 import "./css/dashpro.css";
-import { useStateValue } from "../StateProvider";
-import { db } from "../Firebase";
 
 function AppNavbar() {
-  const [{ user }] = useStateValue();
   const [state, setState] = useState({
     left: false,
   });
-
-  const accountsDetails = document.querySelector(".accountName");
-  useEffect(
-    () =>
-      db
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          accountsDetails.innerHTML = `<div>${doc.data().name}</div>`;
-        }),
-    [user]
-  );
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -69,7 +53,6 @@ function AppNavbar() {
             logo
           </Typography>
         </Toolbar>
-        <div className="accountName"></div>
         <div className="notifi__lg">
           <NotifiCompo />
         </div>
