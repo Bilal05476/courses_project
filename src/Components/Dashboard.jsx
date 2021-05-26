@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import "./css/dashpro.css";
 import "./css/DashContent.css";
 import { useState, useEffect } from "react";
-import { auth, db } from "../Firebase";
+import { db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
 import HomeTabs from "./HomeTabs";
 // import logo from "../img/logo.png";
@@ -18,8 +18,8 @@ export default function Dashboard() {
   const [updateFuture, setUpdateFuture] = useState("");
   const [dataSMessage, setDataSMessage] = useState("");
   const [dataFMessage, setDataFMessage] = useState("");
-  const getOccupation = db.collection("users").doc(user.uid);
 
+  const getOccupation = db.collection("users").doc(user.uid);
   const onSubmit = async (e) => {
     e.preventDefault();
     return getOccupation

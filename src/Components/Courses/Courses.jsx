@@ -11,6 +11,7 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import CertificateBtn from "./CertificateBtn";
 // import logo from "../../img/logo.png";
 
 const Courses = (props) => {
@@ -66,13 +67,29 @@ const Courses = (props) => {
               <Typography className="">Introduction</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <ol className="my-2">
-                <li>
+              <ol className="mx-4 m-2">
+                <li className="my-2">
                   <button
                     className="videoBtn"
                     onClick={() => setVideo(props.videoOne)}
                   >
                     Introduction
+                  </button>
+                </li>
+                <li className="my-2">
+                  <button
+                    className="videoBtn"
+                    onClick={() => setVideo(props.videoTwo)}
+                  >
+                    Git
+                  </button>
+                </li>
+                <li className="my-2">
+                  <button
+                    className="videoBtn"
+                    onClick={() => setVideo(props.videoThree)}
+                  >
+                    Github Desktop
                   </button>
                 </li>
               </ol>
@@ -138,6 +155,9 @@ const Courses = (props) => {
               <ol className="my-2"></ol>
             </AccordionDetails>
           </Accordion>
+
+          {/* Certification Btn */}
+          <CertificateBtn />
         </div>
       </div>
     </div>

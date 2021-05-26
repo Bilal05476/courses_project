@@ -1,7 +1,7 @@
 import loginImage from "../img/img1.jpg";
 import signupImage from "../img/img2.jpg";
 import "./css/Login.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { auth, db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
 
@@ -14,6 +14,7 @@ const Auth = () => {
   const [current, setCurrent] = useState("");
   const [future, setFuture] = useState("");
   const [{ user }, dispatch] = useStateValue();
+  console.log(user)
 
   const toggleForm = () => {
     const section = document.querySelector("section");

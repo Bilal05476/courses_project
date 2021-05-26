@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import Drawer from "@material-ui/core/Drawer";
 import Sidebar from "./Sidebar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NotifiCompo from "./NotifiCompo";
 import "./css/dashpro.css";
 

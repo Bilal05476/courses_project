@@ -31,7 +31,7 @@ const Sidebar = () => {
     return getUserName.get().then((doc) => {
       setUserName(doc.data().name);
     });
-  }, [user]);
+  }, [user, getUserName]);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -152,32 +152,54 @@ const Sidebar = () => {
         <h6>CONNECT US</h6>
         <div className="firstChild">
           <div className="first">
-            <FacebookIcon />
-            <h6 className="mx-3">Facebook</h6>
+            <a
+              href="https://facebook.com/batechnos25"
+              target="_blank"
+              className="d-flex justify-content-center align-items-center text-light"
+              style={{ textDecoration: "none " }}
+            >
+              <FacebookIcon />
+              <h6 className="mx-3">Facebook</h6>
+            </a>
           </div>
         </div>
         <div className="firstChild">
           <div className="first">
-            <InstagramIcon />
-            <h6 className="mx-3">Instagram</h6>
+            <a
+              href="https://instagram.com/batechn05"
+              target="_blank"
+              className="d-flex justify-content-center align-items-center text-light"
+              style={{ textDecoration: "none " }}
+            >
+              <InstagramIcon />
+              <h6 className="mx-3">Instagram</h6>
+            </a>
           </div>
         </div>
         <div className="firstChild">
           <div className="first">
-            <LinkedInIcon />
-            <h6 className="mx-3">LinkedIn</h6>
+            <a
+              href="https://www.linkedin.com/company/ba-technos"
+              target="_blank"
+              className="d-flex justify-content-center align-items-center text-light"
+              style={{ textDecoration: "none " }}
+            >
+              <LinkedInIcon />
+              <h6 className="mx-3">LinkedIn</h6>
+            </a>
           </div>
         </div>
+
         <div className="firstChild">
-          <div className="first">
-            <WhatsAppIcon />
-            <h6 className="mx-3">WhatsApp</h6>
-          </div>
-        </div>
-        <div className="firstChild">
-          <div className="first">
-            <TelegramIcon />
-            <h6 className="mx-3">Telegram</h6>
+          <div className="first" disabled>
+            <a
+              href="#"
+              className="d-flex justify-content-center align-items-center text-secondary"
+              style={{ textDecoration: "none " }}
+            >
+              <TelegramIcon />
+              <h6 className="mx-3">Telegram</h6>
+            </a>
           </div>
         </div>
 
