@@ -16,7 +16,6 @@ const Auth = () => {
   const [signError, setSignError] = useState("");
   const [loginError, setLoginError] = useState("");
   const [{ user }, dispatch] = useStateValue();
-  console.log(user);
 
   const toggleForm = () => {
     const section = document.querySelector("section");
@@ -24,6 +23,7 @@ const Auth = () => {
     container.classList.toggle("active");
     section.classList.toggle("active");
   };
+
   const handleSignUp = (e) => {
     e.preventDefault();
     //auth
@@ -34,6 +34,7 @@ const Auth = () => {
           type: "SET_USER",
           user: result.user,
         });
+        localStorage.setItem("user", JSON.stringify(result.user));
         //send data to database
         return db.collection("users").doc(result.user.uid).set({
           name: signName,
@@ -51,6 +52,7 @@ const Auth = () => {
     setCurrent("");
     setFuture("");
   };
+
   const handleLogin = (e) => {
     e.preventDefault();
     //validate data from database
@@ -61,6 +63,7 @@ const Auth = () => {
           type: "SET_USER",
           user: result.user,
         });
+        localStorage.setItem("user", JSON.stringify(result.user));
       })
       .catch((error) => {
         setLoginError(error.message);
@@ -68,6 +71,7 @@ const Auth = () => {
     setLoginEmail("");
     setLoginPass("");
   };
+  console.log(user);
   return (
     <section>
       <div className="container">

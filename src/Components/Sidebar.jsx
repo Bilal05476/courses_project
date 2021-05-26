@@ -49,6 +49,7 @@ const Sidebar = () => {
           type: "SET_USER",
           user: result,
         });
+        localStorage.setItem("user", null);
       })
       .catch((error) => {
         alert(error);

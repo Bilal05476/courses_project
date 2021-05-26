@@ -103,7 +103,7 @@ export default function Dashboard() {
                 className="modal fade"
                 style={{ marginTop: "8rem" }}
                 id="profileModal"
-                tabindex="-1"
+                tabIndex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
