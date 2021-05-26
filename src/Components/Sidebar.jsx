@@ -14,7 +14,7 @@ import { useStateValue } from "../StateProvider";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+// import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import TelegramIcon from "@material-ui/icons/Telegram";
 import "./css/sidebar.css";
 
@@ -154,7 +154,7 @@ const Sidebar = () => {
           <div className="first">
             <a
               href="https://facebook.com/batechnos25"
-              target="_blank"
+              target="blank"
               className="d-flex justify-content-center align-items-center text-light"
               style={{ textDecoration: "none " }}
             >
@@ -167,7 +167,7 @@ const Sidebar = () => {
           <div className="first">
             <a
               href="https://instagram.com/batechn05"
-              target="_blank"
+              target="blank"
               className="d-flex justify-content-center align-items-center text-light"
               style={{ textDecoration: "none " }}
             >
@@ -180,7 +180,7 @@ const Sidebar = () => {
           <div className="first">
             <a
               href="https://www.linkedin.com/company/ba-technos"
-              target="_blank"
+              target="blank"
               className="d-flex justify-content-center align-items-center text-light"
               style={{ textDecoration: "none " }}
             >
@@ -193,7 +193,7 @@ const Sidebar = () => {
         <div className="firstChild">
           <div className="first" disabled>
             <a
-              href="#"
+              href="https://telegram.com"
               className="d-flex justify-content-center align-items-center text-secondary"
               style={{ textDecoration: "none " }}
             >

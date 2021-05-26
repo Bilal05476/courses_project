@@ -8,6 +8,7 @@ import { Switch, Route } from "react-router-dom";
 import StaticWebCourse from "./Courses/StaticWebCourse";
 import ReactWebCourse from "./Courses/ReactWebCourse";
 import PythonCourse from "./Courses/PythonCourse";
+// import Certificate from "./Courses/Certifacate";
 import { useStateValue } from "../StateProvider";
 
 const DashBoardProject = () => {
@@ -32,7 +33,6 @@ const DashBoardProject = () => {
                     <Dashboard />
                   </div>
                 </Route>
-
                 <Route path="/staticwebcourse" exact>
                   <div className="dashComp">
                     <StaticWebCourse />
@@ -43,7 +43,6 @@ const DashBoardProject = () => {
                     <ReactWebCourse />
                   </div>
                 </Route>
-
                 <Route path="/pythoncourse" exact>
                   <div className="dashComp">
                     <PythonCourse />

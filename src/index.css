@@ -2,6 +2,10 @@
 * {
   font-family: "Montserrat", sans-serif;
 }
-:root{
-  --mainColor-- : #1b193f;
+:root {
+  --mainColor--: #1b193f;
+}
+iframe {
+  width: 100%;
+  height: 800px;
 }

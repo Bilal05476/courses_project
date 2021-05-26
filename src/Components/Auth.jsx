@@ -13,8 +13,10 @@ const Auth = () => {
   const [signName, setSignName] = useState("");
   const [current, setCurrent] = useState("");
   const [future, setFuture] = useState("");
+  const [signError, setSignError] = useState("");
+  const [loginError, setLoginError] = useState("");
   const [{ user }, dispatch] = useStateValue();
-  console.log(user)
+  console.log(user);
 
   const toggleForm = () => {
     const section = document.querySelector("section");
@@ -41,10 +43,7 @@ const Auth = () => {
         });
       })
       .catch((error) => {
-        const errorMessage = document.querySelector(".signerror");
-        {
-          errorMessage.innerHTML = !errorMessage ? " " : error.message;
-        }
+        setSignError(error.message);
       });
     setSignEmail("");
     setSignPass("");
@@ -64,10 +63,7 @@ const Auth = () => {
         });
       })
       .catch((error) => {
-        const errorMessage = document.querySelector(".loginerror");
-        {
-          errorMessage.innerHTML = !errorMessage ? " " : error.message;
-        }
+        setLoginError(error.message);
       });
     setLoginEmail("");
     setLoginPass("");
@@ -100,11 +96,9 @@ const Auth = () => {
               <input type="submit" value="Login" />
               <p className="signup">
                 Don't have an account?{" "}
-                <a href="#" onClick={toggleForm}>
-                  Sign Up
-                </a>
+                <strong onClick={toggleForm}>Sign Up</strong>
               </p>
-              <div className="loginerror"></div>
+              <div className="loginerror">{loginError}</div>
             </form>
           </div>
         </div>
@@ -155,11 +149,9 @@ const Auth = () => {
               <input type="submit" value="Sign Up" />
               <p className="signin">
                 Already have an account?{" "}
-                <a href="#" onClick={toggleForm}>
-                  Sign In
-                </a>
+                <strong onClick={toggleForm}>Sign In</strong>
               </p>
-              <div className="signerror"></div>
+              <div className="signerror">{signError}</div>
             </form>
           </div>
           <div className="imgBx">

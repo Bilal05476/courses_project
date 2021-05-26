@@ -126,13 +126,14 @@ section .container .user .formBx .signup,
   font-weight: 300;
   font-size: 0.7em;
 }
-section .container .user .formBx .signup a,
-section .container .user .formBx .signin a {
+section .container .user .formBx .signup strong,
+section .container .user .formBx .signin strong {
   font-weight: 600;
   color: var(--signin--);
   text-decoration: none;
+  cursor: pointer;
 }
-section .container .user .formBx .signin a {
+section .container .user .formBx .signin strong {
   color: var(--signup--);
 }
 
