@@ -50,16 +50,6 @@ export default function Dashboard() {
   return (
     <>
       <div className="dashboard__content">
-        <div className="row">
-          <div className="col-md-12">
-            <Paper className="heading mainHeader">
-              {/* <img src={logo} alt="logo" className="weblogo" /> */}
-              <Typography className="menuShow" variant="h6" noWrap>
-                Dashboard
-              </Typography>
-            </Paper>
-          </div>
-        </div>
         <Paper className="row mx-1 my-4 px-2 learningPaper">
           <div
             className="col-md-6 my-3"
@@ -69,7 +59,7 @@ export default function Dashboard() {
               color: "#1b193f",
             }}
           >
-            <Typography className="typo" variant="h3">
+            <Typography className="typo welcome" variant="h3">
               Welcome back!
             </Typography>
           </div>
@@ -77,13 +67,13 @@ export default function Dashboard() {
             <Paper className="learning learningHeader p-3">
               <h6 className="typo">My Learning Profile</h6>
               <br />
-              <h6 className="">
+              <h6 className="currentInfo">
                 I am currently a/an{" "}
                 <strong className="current">{currently}</strong>
               </h6>
 
               <br />
-              <h6 className="">
+              <h6 className="futureInfo">
                 I want to become a/an{" "}
                 <strong className="future">{futuree}</strong>
               </h6>

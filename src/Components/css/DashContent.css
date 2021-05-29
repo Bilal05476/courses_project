@@ -41,4 +41,13 @@
   .navShowFont {
     font-size: 0.7rem;
   }
+  .courseName {
+    font-size: 1.3rem !important;
+  }
+  .courseDetails {
+    font-size: 0.9rem !important;
+  }
+  .LMSCred {
+    font-size: 0.5rem !important;
+  }
 }

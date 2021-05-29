@@ -4,19 +4,19 @@
   margin-top: 1.3rem;
   margin-bottom: 1.3rem;
 }
-.weblogo {
+/* .weblogo {
   width: 120px;
-}
+} */
 .dash {
   display: flex;
 }
 .sidebarComp {
   position: fixed;
-  top: 0;
-  bottom: 0;
+  /* top: 0;
+  bottom: 0; */
   height: 100%;
   width: 300px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 /* width */
 ::-webkit-scrollbar {
@@ -65,7 +65,7 @@
 }
 
 .notify__icons {
-  margin-right: 2rem;
+  margin-right: 2rem !important;
   display: flex;
 }
 .notify__icons .MuiSvgIcon-root {
@@ -153,6 +153,14 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
+  .dashboard__content .typo.welcome {
+    font-size: 2.2rem;
+  }
+  .learningHeader .currentInfo,
+  .learningHeader .futureInfo,
+  .courseBtn {
+    font-size: 0.7rem !important;
+  }
 }
 @media (min-width: 992px) {
   .drawer__icon {
@@ -166,15 +174,18 @@
   .bottomNav {
     display: none !important;
   }
-}
-@media (max-width: 767px) {
-  .notifi__lg {
+  .drawerSlide {
     display: none;
   }
+}
+@media (max-width: 767px) {
   .notify__icons {
-    margin: 0;
+    margin-right: -2rem !important;
   }
   .bottomNav {
+    display: none !important;
+  }
+  /* .bottomNav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -182,10 +193,10 @@
     background-position: center;
     background-repeat: no-repeat;
     color: #fff;
-  }
+  } */
 
-  .logo {
-    width: 100%;
+  .appbarLogo {
+    display: none !important;
   }
   .search__bar {
     display: none;

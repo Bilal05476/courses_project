@@ -1,99 +1,75 @@
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
-import Popover from "@material-ui/core/Popover";
 import { NavLink } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import { useState, useEffect } from "react";
-import { auth, db } from "../Firebase";
-import { useStateValue } from "../StateProvider";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-// import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import TelegramIcon from "@material-ui/icons/Telegram";
+import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
 import "./css/sidebar.css";
+import { motion } from "framer-motion";
+
+const svgVariants = {
+  hidden: { rotate: -180 },
+  visible: { rotate: 0, transition: { duration: 1 } },
+};
+const pathVariants = {
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    transition: {
+      duration: 2,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const logoVariants = {
+  hidden: { opacity: 0, y: -200 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
 
 const Sidebar = () => {
-  const [{ user }, dispatch] = useStateValue();
-  const [userName, setUserName] = useState("");
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const getUserName = db.collection("users").doc(user.uid);
-  useEffect(() => {
-    return getUserName.get().then((doc) => {
-      setUserName(doc.data().name);
-    });
-  }, [user, getUserName]);
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
-  const signOut = (e) => {
-    e.preventDefault();
-    auth
-      .signOut()
-      .then((result) => {
-        dispatch({
-          type: "SET_USER",
-          user: result,
-        });
-        localStorage.setItem("user", null);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
-
   return (
     <div className="sidebar">
-      <div className="account__details">
-        {/* <img className="avatar" src={user?.photoURL} alt="userphoto" />
-        <h6>{user?.displayName}</h6> */}
-        <img
-          className="avatar"
-          src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-          alt="userphoto"
-        />
-        <div className="studentName">{userName}</div>
-        <Button
-          style={{ outline: "none" }}
-          aria-describedby={id}
-          onClick={handleClick}
-        >
-          <ArrowDropDownIcon className="drop text-light" />
-        </Button>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
-        >
-          <Button onClick={signOut} className="logoutBtn p-2">
-            Logout
-          </Button>
-        </Popover>
+      <div className="logoComponet">
+        <div className="logo d-flex align-items-center">
+          <motion.svg
+            variants={svgVariants}
+            initial="hidden"
+            animate="visible"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="currentColor"
+            class="bi bi-laptop"
+            viewBox="0 0 16 16"
+          >
+            <motion.path
+              variants={pathVariants}
+              d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"
+            />
+          </motion.svg>
+          <motion.Typography
+            variants={logoVariants}
+            initial="hidden"
+            animate="visible"
+            className="mx-3"
+            variant="h6"
+            noWrap
+          >
+            BATECHNOS
+          </motion.Typography>
+        </div>
       </div>
-
       <div className="main">
         <h6>Learning Never Ends</h6>
       </div>
@@ -120,7 +96,9 @@ const Sidebar = () => {
               id="panel1a-header"
               className="coursesHeader accordionHeader"
             >
-              <Typography className="text-light">Courses</Typography>
+              <Typography className="text-light">
+                <LaptopChromebookIcon className="mx-3" /> Courses
+              </Typography>
             </AccordionSummary>
             <AccordionDetails className="coursesSelector">
               <NavLink

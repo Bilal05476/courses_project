@@ -40,7 +40,9 @@ const Courses = (props) => {
       </div>
       <div className="row">
         <div className="col-md-10 my-4">
-          <Typography variant="h3">{props.courseName}</Typography>
+          <Typography className="courseName" variant="h3">
+            {props.courseName}
+          </Typography>
         </div>
         <div className="col-md-8">
           <iframe
