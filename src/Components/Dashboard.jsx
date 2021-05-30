@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 import { db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
 import HomeTabs from "./HomeTabs";
-// import logo from "../img/logo.png";
+import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+// import TextField from "@material-ui/core/TextField";
 
 export default function Dashboard() {
   const [{ user }] = useStateValue();
@@ -42,10 +42,15 @@ export default function Dashboard() {
     return getOccupation.get().then((doc) => {
       setCurrently(doc.data().currentOcc);
       setFuturee(doc.data().futureOcc);
-      setDataFMessage("");
-      setDataSMessage("");
     });
   }, [user, getOccupation]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDataFMessage("");
+      setDataSMessage("");
+    }, 50000);
+  }, [getOccupation]);
 
   return (
     <>
@@ -101,9 +106,6 @@ export default function Dashboard() {
                 <div className="modal-dialog" role="document">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">
-                        Profile Details
-                      </h5>
                       <button
                         type="button"
                         className="close"
@@ -111,51 +113,61 @@ export default function Dashboard() {
                         aria-label="Close"
                         style={{ outline: "none" }}
                       >
-                        <span aria-hidden="true">&times;</span>
+                        <CloseIcon className="text-light" />
                       </button>
                     </div>
                     <div className="modal-body">
-                      <div className="message bg-success text-light px-2">
-                        {dataSMessage}
+                      <div className="formBx">
+                        {dataSMessage === "" ? (
+                          <div></div>
+                        ) : (
+                          <div className="message bg-success text-light p-2 my-2">
+                            {dataSMessage}
+                          </div>
+                        )}
+
+                        {dataFMessage === "" ? (
+                          <div></div>
+                        ) : (
+                          <div className="message bg-success text-light p-2 my-2">
+                            {dataFMessage}
+                          </div>
+                        )}
+                        <form
+                          className="editDetailsForm px-3"
+                          onSubmit={onSubmit}
+                        >
+                          <h2>Edit Profile</h2>
+                          <input
+                            className="p-2"
+                            value={updateCurrent}
+                            onChange={(e) => setUpdateCurrent(e.target.value)}
+                            type="text"
+                            placeholder="I am currently a/an"
+                            required
+                          />
+                          <input
+                            className="mt-3 p-2"
+                            value={updateFuture}
+                            onChange={(e) => setUpdateFuture(e.target.value)}
+                            type="text"
+                            placeholder="I want to become a/an"
+                            required
+                          />
+                          <div className="submitButton my-3">
+                            <Button
+                              type="submit"
+                              variant="contained"
+                              className="courseBtn text-light"
+                              style={{
+                                outline: "none",
+                              }}
+                            >
+                              Save Changes
+                            </Button>
+                          </div>
+                        </form>
                       </div>
-                      <div className="message bg-danger text-light px-2">
-                        {dataFMessage}
-                      </div>
-                      <form
-                        onSubmit={onSubmit}
-                        noValidate
-                        autoComplete="off"
-                        style={{ display: "flex", flexDirection: "column" }}
-                      >
-                        <TextField
-                          value={updateCurrent}
-                          onChange={(e) => setUpdateCurrent(e.target.value)}
-                          className="my-2 py-2"
-                          id="standard-basic"
-                          label="I am currently a/an"
-                          required
-                        />
-                        <TextField
-                          value={updateFuture}
-                          onChange={(e) => setUpdateFuture(e.target.value)}
-                          className="my-2 py-2"
-                          id="standard-basic"
-                          label="I want to become a/an"
-                          required
-                        />
-                        <div className="modal-footer">
-                          <Button
-                            variant="contained"
-                            className="courseBtn text-light"
-                            style={{
-                              outline: "none",
-                            }}
-                            type="submit"
-                          >
-                            Save Changes
-                          </Button>
-                        </div>
-                      </form>
                     </div>
                   </div>
                 </div>

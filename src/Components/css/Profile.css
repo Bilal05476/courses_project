@@ -1,0 +1,91 @@
+.profile {
+  background: #3333;
+  margin: 2rem;
+  padding: 2rem 4rem;
+  border-radius: 0.4rem;
+  box-shadow: 0.2rem 0.2rem 0.4rem #ccc;
+}
+.profile .row {
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0.2rem 0.2rem 0.4rem #ccc;
+  border-radius: 0.4rem;
+}
+.left__profile .profileImage {
+  width: 80%;
+  display: block;
+  margin: 1rem auto;
+}
+.left__profile > strong {
+  font-size: 0.8rem;
+}
+.left__profile .coursesAssign,
+.left__profile .skills {
+  border-bottom: 0.1rem solid #333;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+.right__profile {
+  margin-top: 2rem;
+}
+.profileNameAndOccu,
+.profileAbout {
+  margin: 3rem;
+}
+.profileNameAndOccu h4 {
+  font-weight: 900;
+  font-size: 2rem;
+}
+.profileNameAndOccu > strong {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--mainColor--);
+}
+.profileAbout .aboutName {
+  margin-top: 6rem;
+  border-bottom: 0.1rem solid #333;
+  padding-bottom: 0.5rem;
+}
+.aboutDetails {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.2rem;
+}
+
+.aboutUser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+.userDataGet {
+  color: var(--mainColor--);
+}
+@media (max-width: 767px) {
+  .right__profile {
+    margin-top: 1.2rem;
+  }
+  .profileNameAndOccu,
+  .profileAbout {
+    margin: 0rem;
+  }
+  .profileAbout .aboutName {
+    margin-top: 2.2rem;
+  }
+  .profile {
+    margin: 1.2rem;
+    padding: 2rem 2rem;
+  }
+  .profile .row {
+    padding: 0.8rem;
+  }
+  .profileNameAndOccu h4 {
+    font-size: 1.5rem;
+  }
+  .profileNameAndOccu > strong {
+    font-size: 0.8rem;
+  }
+  .aboutDetails {
+    font-size: 0.55rem;
+  }
+}

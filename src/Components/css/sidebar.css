@@ -35,20 +35,33 @@
   display: flex;
   flex-direction: column;
   padding: 1.2rem;
-  padding-top: 0.5rem;
+  padding-left: 1rem;
+  padding-top: 0.2rem;
+  color: var(--mainColor--) !important;
+  border-bottom: 0.5rem solid var(--mainColor--);
+  border-top: 0.5rem solid var(--mainColor--);
 }
 .accounts__details h5 {
   font-size: 0.8rem;
   font-weight: 800;
 }
-.accounts__details .profile {
-  color: #424242;
+.accounts__details .profilePopup {
+  color: var(--mainColor--);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   text-decoration: none;
+  font-size: 0.9rem;
   padding: 0.4rem;
   border-radius: 0.2rem;
 }
-
-.accounts__details .profile:hover {
+.accounts__details Button {
+  font-size: 0.7rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.accounts__details .profilePopup:hover {
   background: #ccc;
   transition: 0.5s;
 }
@@ -106,9 +119,9 @@
 }
 .secondChild .coursesSelector .links:hover {
   border-bottom: 1px solid #1b193f;
-  transition: 0.5s cubic-bezier(1, 0, 0, 1);
+  transition: 0.5s;
   color: #1b193f !important;
-  padding-left: 0.6rem;
+  transform: translateX(2px);
 }
 .secondChild h6 {
   margin: 0.9rem auto;

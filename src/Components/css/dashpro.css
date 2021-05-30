@@ -128,6 +128,25 @@
   color: #f1f1f1 !important;
 }
 
+.modal-content {
+  background: #212121;
+}
+.modal-header {
+  border: none;
+}
+.modal-body h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.modal-body .editDetailsForm {
+  display: flex;
+  flex-direction: column;
+}
+.modal-body .editDetailsForm input {
+  outline: none;
+}
+
 @media (max-width: 992px) {
   .dashboard__content .column {
     margin-bottom: 1.2rem;

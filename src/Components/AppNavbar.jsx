@@ -1,6 +1,6 @@
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import Drawer from "@material-ui/core/Drawer";
 import Sidebar from "./Sidebar";
@@ -63,7 +63,7 @@ function AppNavbar() {
                   <MenuIcon />
                 </button>
                 <Drawer
-                  className="drawerSlide"
+                  className="drawerSlide d-flex"
                   anchor={anchor}
                   open={state[anchor]}
                   onClose={toggleDrawer(anchor, false)}

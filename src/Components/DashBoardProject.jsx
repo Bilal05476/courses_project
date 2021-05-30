@@ -9,6 +9,7 @@ import StaticWebCourse from "./Courses/StaticWebCourse";
 import ReactWebCourse from "./Courses/ReactWebCourse";
 import PythonCourse from "./Courses/PythonCourse";
 // import Certificate from "./Courses/Certifacate";
+import Profile from "./Profile";
 import { useStateValue } from "../StateProvider";
 
 const DashBoardProject = () => {
@@ -47,6 +48,11 @@ const DashBoardProject = () => {
                 <Route path="/pythoncourse" exact>
                   <div className="dashComp">
                     <PythonCourse />
+                  </div>
+                </Route>
+                <Route path="/profile" exact>
+                  <div className="dashComp">
+                    <Profile />
                   </div>
                 </Route>
               </Switch>

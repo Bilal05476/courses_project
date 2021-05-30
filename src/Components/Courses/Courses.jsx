@@ -22,8 +22,8 @@ const Courses = (props) => {
         <div className="col-md-12">
           <Paper className="heading mainHeader">
             {/* <img src={logo} alt="logo" className="weblogo" /> */}
-            <Typography className="menuShow" variant="h6" noWrap>
-              Courses
+            <Typography className="" variant="h6" noWrap>
+              {props.courseName}
             </Typography>
             <div className="navShow">
               <Breadcrumbs aria-label="breadcrumb">
@@ -40,9 +40,9 @@ const Courses = (props) => {
       </div>
       <div className="row">
         <div className="col-md-10 my-4">
-          <Typography className="courseName" variant="h3">
+          {/* <Typography className="courseName" variant="h3">
             {props.courseName}
-          </Typography>
+          </Typography> */}
         </div>
         <div className="col-md-8">
           <iframe

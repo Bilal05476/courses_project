@@ -13,6 +13,7 @@ const Auth = () => {
   const [signName, setSignName] = useState("");
   const [current, setCurrent] = useState("");
   const [future, setFuture] = useState("");
+  const [gender, setGender] = useState("");
   const [signError, setSignError] = useState("");
   const [loginError, setLoginError] = useState("");
   const [{ user }, dispatch] = useStateValue();
@@ -41,16 +42,24 @@ const Auth = () => {
           email: signEmail,
           currentOcc: current,
           futureOcc: future,
+          gender,
         });
       })
       .catch((error) => {
         setSignError(error.message);
+        setSignEmail(signEmail);
+        setSignPass("");
+        setSignName(signName);
+        setCurrent(current);
+        setFuture(future);
+        setGender(gender);
       });
     setSignEmail("");
     setSignPass("");
     setSignName("");
     setCurrent("");
     setFuture("");
+    setGender("");
   };
 
   const handleLogin = (e) => {
@@ -125,6 +134,14 @@ const Auth = () => {
                 type="email"
                 placeholder="Email Address"
                 id="signup-email"
+                required
+              />
+              <input
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                type="text"
+                placeholder="Gender"
+                id="gender"
                 required
               />
               <input

@@ -6,15 +6,19 @@ import { db, auth } from "../Firebase";
 import "./css/dashpro.css";
 import { useStateValue } from "../StateProvider";
 import { NavLink } from "react-router-dom";
+import PersonIcon from "@material-ui/icons/Person";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const NotifiCompo = () => {
   const [userName, setUserName] = useState("");
+  const [userGender, setUserGender] = useState("");
   const [{ user }, dispatch] = useStateValue();
 
   const getUserName = db.collection("users").doc(user.uid);
   useEffect(() => {
     return getUserName.get().then((doc) => {
       setUserName(doc.data().name);
+      setUserGender(doc.data().gender);
     });
   }, [user, getUserName]);
 
@@ -48,11 +52,41 @@ const NotifiCompo = () => {
 
   return (
     <div className="notify__icons">
-      <img
+      {/* <img
         className="avatar"
-        src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
+        src={
+          userGender === "male"
+            ? "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
+            : "https://www.auditionform.in/wp-content/uploads/2020/09/User-4.png"
+        }
         alt="userphoto"
-      />
+      /> */}
+      {userGender === "female" ? (
+        ""
+      ) : (
+        <img
+          className="avatar"
+          src={
+            userGender === "male"
+              ? "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
+              : ""
+          }
+          alt=""
+        />
+      )}
+      {userGender === "male" ? (
+        ""
+      ) : (
+        <img
+          className="avatar"
+          src={
+            userGender === "female"
+              ? "https://www.auditionform.in/wp-content/uploads/2020/09/User-4.png"
+              : ""
+          }
+          alt=""
+        />
+      )}
       <div className="userName">{userName}</div>
       <Button
         style={{ outline: "none" }}
@@ -77,12 +111,12 @@ const NotifiCompo = () => {
       >
         <div className="accounts__details">
           <h5 className="my-4">Account Details</h5>
-          <NavLink className="profile text-center" to="/">
-            Profile
+          <NavLink className="profilePopup text-center" to="/profile">
+            <PersonIcon /> Profile
           </NavLink>
           <hr />
           <Button onClick={signOut} className="logoutBtn p-2">
-            Logout
+            <ExitToAppIcon /> Logout
           </Button>
         </div>
       </Popover>
