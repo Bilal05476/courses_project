@@ -138,7 +138,7 @@ const Auth = () => {
               />
               <input
                 value={gender}
-                onChange={(e) => setGender(e.target.value)}
+                onChange={(e) => setGender(e.target.value.toLowerCase())}
                 type="text"
                 placeholder="Gender"
                 id="gender"
@@ -151,7 +151,7 @@ const Auth = () => {
                 placeholder="Password"
                 required
               />
-              <input
+              {/* <input
                 value={current}
                 onChange={(e) => setCurrent(e.target.value)}
                 type="text"
@@ -166,7 +166,7 @@ const Auth = () => {
                 placeholder="I want to become a/an"
                 id="future"
                 required
-              />
+              /> */}
               <input type="submit" value="Sign Up" />
               <p className="signin">
                 Already have an account?{" "}

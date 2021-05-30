@@ -49,7 +49,7 @@ export default function Dashboard() {
     setTimeout(() => {
       setDataFMessage("");
       setDataSMessage("");
-    }, 50000);
+    }, 20000);
   }, [getOccupation]);
 
   return (
