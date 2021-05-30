@@ -4,6 +4,7 @@
   padding: 2rem 4rem;
   border-radius: 0.4rem;
   box-shadow: 0.2rem 0.2rem 0.4rem #ccc;
+  color: var(--mainColor--);
 }
 .profile .row {
   background: #fff;
@@ -39,7 +40,7 @@
 .profileNameAndOccu > strong {
   font-size: 0.9rem;
   text-transform: uppercase;
-  color: var(--mainColor--);
+  color: blue;
 }
 .profileAbout .aboutName {
   margin-top: 6rem;
@@ -59,7 +60,14 @@
   margin-bottom: 0.8rem;
 }
 .userDataGet {
-  color: var(--mainColor--);
+  color: blue;
+}
+.aboutLabelIcon {
+  display: flex;
+  align-items: center;
+}
+.aboutLabelIcon .MuiSvgIcon-root {
+  margin-right: 0.4rem;
 }
 @media (max-width: 767px) {
   .right__profile {
@@ -86,6 +94,9 @@
     font-size: 0.8rem;
   }
   .aboutDetails {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
+  }
+  .aboutLabelIcon .MuiSvgIcon-root {
+    font-size: 1rem;
   }
 }

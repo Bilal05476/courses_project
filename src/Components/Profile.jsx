@@ -203,21 +203,21 @@ const Profile = () => {
               alt=""
             />
           )}
-          <h6 className="coursesAssign">
-            <LaptopChromebookIcon /> Courses Assign
+          <h6 className="coursesAssign d-flex align-items-center">
+            <LaptopChromebookIcon className="mr-2" /> Courses Assign
           </h6>
           <strong>Static Website Development</strong> <br />
-          <strong>React Wesbsite Development</strong> <br />
+          <strong>React Website Development</strong> <br />
           <strong>Python Programming</strong> <br />
-          <h6 className="skills">
-            <AssignmentTurnedInIcon /> Skills
+          <h6 className="skills d-flex align-items-center">
+            <AssignmentTurnedInIcon className="mr-2" /> Skills
           </h6>
           <strong>JavaScript</strong> <br />
           <strong>React Js</strong> <br />
           <strong>Python</strong> <br />
-          <strong>JavaScript</strong> <br />
-          <strong>React Js</strong> <br />
-          <strong>Python</strong> <br />
+          <strong>Github</strong> <br />
+          <strong>Firebase</strong> <br />
+          <strong>Netlify</strong> <br />
         </div>
         <div className="right__profile col-md-9">
           <div className="profileNameAndOccu">
@@ -225,36 +225,36 @@ const Profile = () => {
             <strong>{userCurrent}</strong>
           </div>
           <div className="profileAbout">
-            <h6 className="aboutName">
-              <InfoIcon /> About
+            <h6 className="aboutName d-flex align-items-center">
+              <InfoIcon className="mr-2" /> About
             </h6>
             <div className="aboutDetails">
               <div className="aboutUser">
-                <strong className="">
+                <strong className="aboutLabelIcon">
                   <AssignmentIndIcon /> User Name
                 </strong>
                 <strong className="userDataGet">{userName}</strong>
               </div>
               <div className="aboutUser">
-                <strong className="">
+                <strong className="aboutLabelIcon">
                   <EmailIcon /> User Email
                 </strong>
                 <strong className="userDataGet">{userEmail}</strong>
               </div>
               <div className="aboutUser">
-                <strong className="">
+                <strong className="aboutLabelIcon">
                   <WorkIcon /> Current Occupation
                 </strong>
                 <strong className="userDataGet">{userCurrent}</strong>
               </div>
               <div className="aboutUser">
-                <strong className="">
+                <strong className="aboutLabelIcon">
                   <HighlightIcon /> Future Plan
                 </strong>
                 <strong className="userDataGet">{userFuture}</strong>
               </div>
               <div className="aboutUser">
-                <strong className="">
+                <strong className="aboutLabelIcon">
                   <WcIcon /> Gender
                 </strong>
                 <strong className="userDataGet">{userGender}</strong>
