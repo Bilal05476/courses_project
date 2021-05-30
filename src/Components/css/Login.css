@@ -87,7 +87,8 @@ section .container .user .formBx h2 {
   color: var(--whiteColor--);
 }
 
-section .container .user .formBx input {
+section .container .user .formBx input,
+select {
   width: 100%;
   padding: 10px;
   background: #f5f5f5;

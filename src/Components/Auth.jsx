@@ -81,6 +81,16 @@ const Auth = () => {
     setLoginPass("");
   };
   console.log(user);
+  const options = [
+    {
+      label: "Male",
+      value: "male",
+    },
+    {
+      label: "Female",
+      value: "female",
+    },
+  ];
   return (
     <section>
       <div className="container">
@@ -136,14 +146,24 @@ const Auth = () => {
                 id="signup-email"
                 required
               />
-              <input
+              {/* <input
                 value={gender}
                 onChange={(e) => setGender(e.target.value.toLowerCase())}
                 type="text"
                 placeholder="Gender"
                 id="gender"
                 required
-              />
+              /> */}
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
+                {options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
               <input
                 value={signPass}
                 onChange={(e) => setSignPass(e.target.value)}

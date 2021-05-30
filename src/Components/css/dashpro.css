@@ -138,6 +138,8 @@
   color: #fff;
   text-align: center;
   margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
 }
 .modal-body .editDetailsForm {
   display: flex;
@@ -145,6 +147,7 @@
 }
 .modal-body .editDetailsForm input {
   outline: none;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 992px) {
@@ -204,15 +207,6 @@
   .bottomNav {
     display: none !important;
   }
-  /* .bottomNav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url(../../img/backGrad.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #fff;
-  } */
 
   .appbarLogo {
     display: none !important;
@@ -228,5 +222,12 @@
   }
   .videoFrame {
     height: 200px;
+  }
+  .modal-body h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .modal-body .editDetailsForm input {
+    font-size: 0.7rem;
   }
 }
