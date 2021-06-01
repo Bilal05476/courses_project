@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import "./css/DashContent.css";
@@ -7,6 +7,8 @@ import { NavLink } from "react-router-dom";
 import PublicIcon from "@material-ui/icons/Public";
 
 const CoursePaper = (props) => {
+  const [courseEnroll, setCourseEnroll] = useState(false);
+
   return (
     <Paper className="my-3">
       <Typography className="p-2 px-4">Course</Typography>
@@ -33,17 +35,48 @@ const CoursePaper = (props) => {
             padding: "1rem",
           }}
         >
-          <NavLink to={props.courseLink} style={{ textDecoration: "none" }}>
+          {courseEnroll ? (
+            <div></div>
+          ) : (
             <Button
               variant="contained"
-              className="courseBtn text-light"
+              className="courseBtn text-light "
               style={{
                 outline: "none",
               }}
+              onClick={() => setCourseEnroll(true)}
             >
-              Launch Course
+              Enroll Now
             </Button>
-          </NavLink>
+          )}
+
+          {!courseEnroll ? (
+            <div></div>
+          ) : (
+            <>
+              <NavLink to={props.courseLink} style={{ textDecoration: "none" }}>
+                <Button
+                  variant="contained"
+                  className="courseBtn text-light"
+                  style={{
+                    outline: "none",
+                  }}
+                >
+                  Launch Course
+                </Button>
+              </NavLink>
+              <Button
+                variant="contained"
+                className="courseBtn text-light ml-2"
+                style={{
+                  outline: "none",
+                }}
+                onClick={() => setCourseEnroll(false)}
+              >
+                Unenroll
+              </Button>
+            </>
+          )}
         </div>
         <div
           className="col-md-12"

@@ -4,6 +4,7 @@ import "./css/Login.css";
 import { useState } from "react";
 import { auth, db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Auth = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -13,7 +14,7 @@ const Auth = () => {
   const [signName, setSignName] = useState("");
   const [current, setCurrent] = useState("");
   const [future, setFuture] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("select");
   const [signError, setSignError] = useState("");
   const [loginError, setLoginError] = useState("");
   const [{ user }, dispatch] = useStateValue();
@@ -50,8 +51,6 @@ const Auth = () => {
         setSignEmail(signEmail);
         setSignPass("");
         setSignName(signName);
-        setCurrent(current);
-        setFuture(future);
         setGender(gender);
       });
     setSignEmail("");
@@ -82,6 +81,10 @@ const Auth = () => {
   };
   console.log(user);
   const options = [
+    {
+      label: "Select",
+      value: "select",
+    },
     {
       label: "Male",
       value: "male",
@@ -171,23 +174,34 @@ const Auth = () => {
                 placeholder="Password"
                 required
               />
-              {/* <input
-                value={current}
-                onChange={(e) => setCurrent(e.target.value)}
-                type="text"
-                placeholder="I am currently a/an"
-                id="current"
-                required
-              />
-              <input
-                value={future}
-                onChange={(e) => setFuture(e.target.value)}
-                type="text"
-                placeholder="I want to become a/an"
-                id="future"
-                required
-              /> */}
-              <input type="submit" value="Sign Up" />
+
+              {signName === "" ||
+              signEmail === "" ||
+              gender === "select" ||
+              signPass === "" ? (
+                <>
+                  <input
+                    disabled
+                    type="reset"
+                    value="Fill all fields correctly"
+                    className="bg-secondary text-light"
+                  />
+                </>
+              ) : (
+                <>
+                  <AnimatePresence>
+                    <motion.input
+                      type="submit"
+                      value="Sign Up"
+                      initial={{ opacity: 0, x: 200 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0 }}
+                    />
+                  </AnimatePresence>
+
+                  {/* <input type="submit" value="Sign Up" /> */}
+                </>
+              )}
               <p className="signin">
                 Already have an account?{" "}
                 <strong onClick={toggleForm}>Sign In</strong>
