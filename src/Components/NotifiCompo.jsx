@@ -52,39 +52,22 @@ const NotifiCompo = () => {
 
   return (
     <div className="notify__icons">
-      {/* <img
-        className="avatar"
-        src={
-          userGender === "male"
-            ? "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
-            : "https://www.auditionform.in/wp-content/uploads/2020/09/User-4.png"
-        }
-        alt="userphoto"
-      /> */}
-      {userGender === "female" ? (
-        ""
-      ) : (
+      {userGender === "female" && (
         <img
           className="avatar"
           src={
-            userGender === "male"
-              ? "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
-              : ""
+            "https://www.auditionform.in/wp-content/uploads/2020/09/User-4.png"
           }
-          alt=""
+          alt="user"
         />
       )}
-      {userGender === "male" ? (
-        ""
-      ) : (
+      {userGender === "male" && (
         <img
           className="avatar"
           src={
-            userGender === "female"
-              ? "https://www.auditionform.in/wp-content/uploads/2020/09/User-4.png"
-              : ""
+            "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
           }
-          alt=""
+          alt="user"
         />
       )}
       <div className="userName">{userName}</div>

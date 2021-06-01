@@ -55,7 +55,7 @@
 
 .aboutUser {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   margin-bottom: 0.8rem;
 }
@@ -69,6 +69,12 @@
 .aboutLabelIcon .MuiSvgIcon-root {
   margin-right: 0.4rem;
 }
+@media (max-width: 1024px) {
+  .aboutUser {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 767px) {
   .right__profile {
     margin-top: 1.2rem;
@@ -94,7 +100,7 @@
     font-size: 0.8rem;
   }
   .aboutDetails {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
   }
   .aboutLabelIcon .MuiSvgIcon-root {
     font-size: 1rem;

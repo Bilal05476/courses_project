@@ -149,6 +149,39 @@
   outline: none;
   font-size: 0.9rem;
 }
+.courseSearch {
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid #fff;
+}
+.courseSearch input {
+  padding: 0.7rem;
+  outline: none;
+  padding-left: 0.9rem;
+  height: 45px;
+  border: none;
+  background: transparent;
+  color: #fff !important;
+}
+.courseSearch input::placeholder {
+  color: #fff;
+}
+.courseSearch .courseSearchBtn {
+  background: #fff;
+  border-radius: 0;
+  outline: none;
+  height: 45px !important;
+  border: none;
+}
+.courseSearch .courseSearchBtn:hover {
+  background: rgb(1, 40, 126);
+  color: #fff;
+}
+@media (max-width: 1228px) {
+  .courseSearchSection {
+    display: none !important;
+  }
+}
 
 @media (max-width: 992px) {
   .dashboard__content .column {
@@ -188,26 +221,16 @@
   .drawer__icon {
     display: none;
   }
-  .bottomNavComp {
-    display: none;
-  }
-}
-@media (min-width: 766px) {
-  .bottomNav {
+
+  .drawerSlide {
     display: none !important;
   }
-  .drawerSlide {
-    display: none;
-  }
 }
+
 @media (max-width: 767px) {
   .notify__icons {
     margin-right: -2rem !important;
   }
-  .bottomNav {
-    display: none !important;
-  }
-
   .appbarLogo {
     display: none !important;
   }

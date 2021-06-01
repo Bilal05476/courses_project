@@ -8,6 +8,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import NotifiCompo from "./NotifiCompo";
 import "./css/dashpro.css";
+import SearchIcon from "@material-ui/icons/Search";
+import { Button } from "@material-ui/core";
 
 const svgVariants = {
   hidden: { rotate: -180 },
@@ -104,6 +106,20 @@ function AppNavbar() {
             </div>
           </div>
         </Toolbar>
+        <div className="courseSearchSection d-flex align-items-center">
+          <form className="courseSearch">
+            <input
+              style={{ width: "500px" }}
+              type="text"
+              placeholder="what do you want to learn?"
+              required
+            />
+            <Button type="submit" className="courseSearchBtn">
+              <SearchIcon />
+            </Button>
+          </form>
+          <div className="px-5">For Students</div>
+        </div>
         <div className="notifi__lg">
           <NotifiCompo />
         </div>

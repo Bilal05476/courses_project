@@ -3,7 +3,6 @@ import Sidebar from "./Sidebar";
 import AppNavbar from "./AppNavbar";
 import Auth from "./Auth";
 import "./css/dashpro.css";
-import BottomNav from "./BottomNavigations";
 import { Switch, Route } from "react-router-dom";
 import StaticWebCourse from "./Courses/StaticWebCourse";
 import ReactWebCourse from "./Courses/ReactWebCourse";
@@ -56,9 +55,6 @@ const DashBoardProject = () => {
                   </div>
                 </Route>
               </Switch>
-            </div>
-            <div className="bottomNavComp">
-              <BottomNav />
             </div>
           </div>
           <Switch>
