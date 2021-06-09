@@ -5,10 +5,16 @@ const PythonCourse = () => {
     <Courses
       courseName="Python Programming"
       secondAccordion="Get Started"
-      thirdAccordion="Looks"
+      thirdAccordion="Loops"
       fourthAccordion="Database With Python"
-      videoOne="https://www.youtube.com/embed/s9-ypLPhqro"
-      
+      videoIntro="https://www.youtube.com/embed/cocJx3ZZwOM"
+      introName="Introduction"
+      videoGit="https://www.youtube.com/embed/oc1T4aNAYVc"
+      gitName="Git"
+      videoGithub="https://www.youtube.com/embed/s9-ypLPhqro"
+      githubName="Github Desktop"
+      videoVsCode="https://www.youtube.com/embed/s9-ypLPhqro"
+      IDEName="Jupyter (IDE)"
     />
   );
 };

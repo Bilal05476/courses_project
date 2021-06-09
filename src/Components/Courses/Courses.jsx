@@ -5,24 +5,20 @@ import "../css/DashContent.css";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-// Accordion
-// import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CertificateBtn from "./CertificateBtn";
-// import logo from "../../img/logo.png";
 
 const Courses = (props) => {
   const [video, setVideo] = useState("");
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   return (
     <div className="dashboard__content">
       <div className="row">
         <div className="col-md-12">
           <Paper className="heading mainHeader">
-            {/* <img src={logo} alt="logo" className="weblogo" /> */}
             <Typography className="" variant="h6" noWrap>
               {props.courseName}
             </Typography>
@@ -69,7 +65,7 @@ const Courses = (props) => {
                     className="videoBtn"
                     onClick={() => setVideo(props.videoIntro)}
                   >
-                    Introduction
+                    {props.introName}
                   </button>
                 </li>
                 <li className="my-2">
@@ -77,7 +73,7 @@ const Courses = (props) => {
                     className="videoBtn"
                     onClick={() => setVideo(props.videoGit)}
                   >
-                    Git
+                    {props.gitName}
                   </button>
                 </li>
                 <li className="my-2">
@@ -85,7 +81,7 @@ const Courses = (props) => {
                     className="videoBtn"
                     onClick={() => setVideo(props.videoGithub)}
                   >
-                    Github Desktop
+                    {props.githubName}
                   </button>
                 </li>
                 <li className="my-2">
@@ -93,7 +89,7 @@ const Courses = (props) => {
                     className="videoBtn"
                     onClick={() => setVideo(props.videoVsCode)}
                   >
-                    VS Code (IDE)
+                    {props.IDEName}
                   </button>
                 </li>
               </ol>
