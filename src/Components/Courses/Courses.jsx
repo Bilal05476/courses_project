@@ -13,7 +13,7 @@ import CertificateBtn from "./CertificateBtn";
 
 const Courses = (props) => {
   const [video, setVideo] = useState("");
-  // const [loading, setLoading] = useState(true);
+
   return (
     <div className="dashboard__content">
       <div className="row">
@@ -107,7 +107,40 @@ const Courses = (props) => {
               <Typography className="">{props.secondAccordion}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <ol className="my-2"></ol>
+              <ol className="mx-4 m-2">
+                <li className="my-2">
+                  <button
+                    className="videoBtn"
+                    onClick={() => setVideo(props.videoIntro)}
+                  >
+                    {props.introName}
+                  </button>
+                </li>
+                <li className="my-2">
+                  <button
+                    className="videoBtn"
+                    onClick={() => setVideo(props.videoGit)}
+                  >
+                    {props.gitName}
+                  </button>
+                </li>
+                <li className="my-2">
+                  <button
+                    className="videoBtn"
+                    onClick={() => setVideo(props.videoGithub)}
+                  >
+                    {props.githubName}
+                  </button>
+                </li>
+                <li className="my-2">
+                  <button
+                    className="videoBtn"
+                    onClick={() => setVideo(props.videoVsCode)}
+                  >
+                    {props.IDEName}
+                  </button>
+                </li>
+              </ol>
             </AccordionDetails>
           </Accordion>
 

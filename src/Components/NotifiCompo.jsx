@@ -1,4 +1,5 @@
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import Popover from "@material-ui/core/Popover";
 import Button from "@material-ui/core/Button";
 import { useState, useEffect } from "react";
@@ -76,7 +77,11 @@ const NotifiCompo = () => {
         aria-describedby={id}
         onClick={handleClick}
       >
-        <ArrowDropDownIcon className="dropdownBtn text-warning" />
+        {open ? (
+          <ArrowDropUpIcon className="dropdownBtn text-warning" />
+        ) : (
+          <ArrowDropDownIcon className="dropdownBtn text-warning" />
+        )}
       </Button>
       <Popover
         id={id}
