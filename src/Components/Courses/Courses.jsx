@@ -16,6 +16,7 @@ import CertificateBtn from "./CertificateBtn";
 
 const Courses = (props) => {
   const [video, setVideo] = useState("");
+  const [loading, setLoading] = useState(true);
   return (
     <div className="dashboard__content">
       <div className="row">
@@ -39,11 +40,6 @@ const Courses = (props) => {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-10 my-4">
-          {/* <Typography className="courseName" variant="h3">
-            {props.courseName}
-          </Typography> */}
-        </div>
         <div className="col-md-8">
           <iframe
             title="canvas"
@@ -53,8 +49,6 @@ const Courses = (props) => {
             allowFullScreen
             className="videoFrame"
           ></iframe>
-          {/* allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-          gyroscope; picture-in-picture" */}
         </div>
 
         <div className="col-md-4">
@@ -73,7 +67,7 @@ const Courses = (props) => {
                 <li className="my-2">
                   <button
                     className="videoBtn"
-                    onClick={() => setVideo(props.videoOne)}
+                    onClick={() => setVideo(props.videoIntro)}
                   >
                     Introduction
                   </button>
@@ -81,7 +75,7 @@ const Courses = (props) => {
                 <li className="my-2">
                   <button
                     className="videoBtn"
-                    onClick={() => setVideo(props.videoTwo)}
+                    onClick={() => setVideo(props.videoGit)}
                   >
                     Git
                   </button>
@@ -89,9 +83,17 @@ const Courses = (props) => {
                 <li className="my-2">
                   <button
                     className="videoBtn"
-                    onClick={() => setVideo(props.videoThree)}
+                    onClick={() => setVideo(props.videoGithub)}
                   >
                     Github Desktop
+                  </button>
+                </li>
+                <li className="my-2">
+                  <button
+                    className="videoBtn"
+                    onClick={() => setVideo(props.videoVsCode)}
+                  >
+                    VS Code (IDE)
                   </button>
                 </li>
               </ol>
