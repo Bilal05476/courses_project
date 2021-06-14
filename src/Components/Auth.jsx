@@ -14,10 +14,13 @@ const Auth = () => {
   const [signName, setSignName] = useState("");
   const [current, setCurrent] = useState("");
   const [future, setFuture] = useState("");
+  const [skills, setSkills] = useState([]);
   const [gender, setGender] = useState("select");
   const [signError, setSignError] = useState("");
   const [loginError, setLoginError] = useState("");
   const [{ user }, dispatch] = useStateValue();
+  
+  console.log(user);
 
   const toggleForm = () => {
     const section = document.querySelector("section");
@@ -43,6 +46,7 @@ const Auth = () => {
           email: signEmail,
           currentOcc: current,
           futureOcc: future,
+          skills: skills,
           gender,
         });
       })
@@ -58,6 +62,7 @@ const Auth = () => {
     setSignName("");
     setCurrent("");
     setFuture("");
+    setSkills([]);
     setGender("");
   };
 
@@ -79,7 +84,7 @@ const Auth = () => {
     setLoginEmail("");
     setLoginPass("");
   };
-  console.log(user);
+
   const options = [
     {
       label: "Select",
@@ -94,6 +99,7 @@ const Auth = () => {
       value: "female",
     },
   ];
+
   return (
     <section>
       <div className="container">
