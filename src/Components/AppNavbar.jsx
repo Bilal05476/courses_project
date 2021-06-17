@@ -85,7 +85,7 @@ function AppNavbar() {
                 width="40"
                 height="40"
                 fill="currentColor"
-                class="bi bi-laptop"
+                className="bi bi-laptop"
                 viewBox="0 0 16 16"
               >
                 <motion.path

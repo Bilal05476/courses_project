@@ -72,6 +72,12 @@
 .modalClose {
   background: crimson !important;
 }
+
+.editProButtons.modalClose,
+.editProButtons.courseBtn {
+  border-radius: 30px !important ;
+}
+
 @media (max-width: 1024px) {
   .aboutUser {
     flex-direction: column;
@@ -107,5 +113,8 @@
   }
   .aboutLabelIcon .MuiSvgIcon-root {
     font-size: 1rem;
+  }
+  .editDetailsForm {
+    padding: 0 !important;
   }
 }

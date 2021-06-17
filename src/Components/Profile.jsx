@@ -10,9 +10,11 @@ import WcIcon from "@material-ui/icons/Wc";
 import InfoIcon from "@material-ui/icons/Info";
 import HighlightIcon from "@material-ui/icons/Highlight";
 import Button from "@material-ui/core/Button";
-
+import EditIcon from "@material-ui/icons/Edit";
+import CloseIcon from "@material-ui/icons/Close";
 import "./css/Profile.css";
 import Skills from "./Skills";
+import SkillsForm from "./SkillsForm";
 
 const Profile = () => {
   const [userName, setUserName] = useState("");
@@ -24,15 +26,14 @@ const Profile = () => {
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
   const [updateName, setUpdateName] = useState("");
-  const [updateEmail, setUpdateEmail] = useState("");
   const [dataSMessage, setDataSMessage] = useState("");
   const [dataFMessage, setDataFMessage] = useState("");
   const [addSkills, setAddSkills] = useState("");
-  // const [skills, setSkills] = useState([]);
   const [toggleModal, setToggleModal] = useState(false);
+  const [toggleSkillBtn, setToggleSkillBtn] = useState(false);
   const [{ user }] = useStateValue();
   const getUserData = db.collection("users").doc(user.uid);
-  
+
   useEffect(() => {
     return getUserData.get().then((doc) => {
       setUserName(doc.data().name);
@@ -44,11 +45,6 @@ const Profile = () => {
     });
   }, [user, getUserData]);
 
-  // const onAdd = () => {
-  //   // const id = Math.floor(Math.random() * 10000) + 1;
-  //   // setUserSkills([...userSkills, addSkills]);
-  // };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     userSkills.push(addSkills);
@@ -57,14 +53,12 @@ const Profile = () => {
         currentOcc: updateCurrent,
         futureOcc: updateFuture,
         name: updateName,
-        email: updateEmail,
         skills: userSkills,
       })
       .then(() => {
         setDataSMessage("Profile successfully updated! 🙂");
         setUpdateCurrent("");
         setUpdateFuture("");
-        setUpdateEmail("");
         setUpdateName("");
         setAddSkills("");
         setTimeout(() => {
@@ -81,28 +75,30 @@ const Profile = () => {
       });
   };
 
-  
   return (
     <div className="profile">
       <div className="row">
         <div className="col-md-12 text-right">
           <Button
             variant="contained"
-            className={`text-light ${toggleModal ? "modalClose" : "courseBtn"}`}
+            className={`text-light editProButtons ${
+              toggleModal ? "modalClose" : "courseBtn"
+            }`}
             style={{
               outline: "none",
             }}
             onClick={() => setToggleModal(!toggleModal)}
           >
-            {toggleModal ? "Close" : "Edit your profile"}
+            {toggleModal ? <CloseIcon /> : <EditIcon />}
           </Button>
         </div>
         <div className="col-md-12">
           {toggleModal && (
             <div className="" role="document">
-              <div className="">
-                <div className="modal-header"></div>
-                <div className="modal-body">
+              <div className="modal-header">
+
+              </div>
+                <div className="modal-body px-0">
                   <div className="formBx">
                     {dataSMessage === "" ? (
                       <div></div>
@@ -137,14 +133,7 @@ const Profile = () => {
                         placeholder="Name"
                         required
                       />
-                      <input
-                        className="mt-3 p-2"
-                        value={updateEmail}
-                        onChange={(e) => setUpdateEmail(e.target.value)}
-                        type="text"
-                        placeholder="Email"
-                        required
-                      />
+
                       <input
                         className="mt-3 p-2"
                         value={updateCurrent}
@@ -166,7 +155,7 @@ const Profile = () => {
                         value={addSkills}
                         onChange={(e) => setAddSkills(e.target.value)}
                         type="text"
-                        placeholder="Add skills"
+                        placeholder="Add skill"
                         required
                       />
 
@@ -185,7 +174,7 @@ const Profile = () => {
                     </form>
                   </div>
                 </div>
-              </div>
+             
             </div>
           )}
         </div>
@@ -217,7 +206,32 @@ const Profile = () => {
           <strong>Python Programming</strong> <br />
           <h6 className="skills d-flex align-items-center">
             <AssignmentTurnedInIcon className="mr-2" /> Skills
+            <Button
+              variant="contained"
+              className={`ml-3 text-light editProButtons ${
+                toggleSkillBtn ? "modalClose" : "courseBtn"
+              }`}
+              style={{
+                outline: "none",
+              }}
+              onClick={() => setToggleSkillBtn(!toggleSkillBtn)}
+            >
+              {toggleSkillBtn ? (
+                <CloseIcon
+                  style={{
+                    fontSize: "1rem",
+                  }}
+                />
+              ) : (
+                <EditIcon
+                  style={{
+                    fontSize: "1rem",
+                  }}
+                />
+              )}
+            </Button>
           </h6>
+          {toggleSkillBtn ? <SkillsForm /> : " "}
           {userSkills.length > 0 ? <Skills skills={userSkills} /> : "No Skills"}
         </div>
         <div className="right__profile col-md-9">

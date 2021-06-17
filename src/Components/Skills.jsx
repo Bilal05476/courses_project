@@ -3,10 +3,10 @@ import React from "react";
 const Skills = ({ skills }) => {
   return (
     <div>
-      {skills.map((skill) => {
+      {skills.map((skill, ind) => {
         return (
           <>
-            <strong key={skill}>{skill}</strong>
+            <strong key={ind}>{skill}</strong>
             <br />
           </>
         );
