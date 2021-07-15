@@ -15,33 +15,18 @@ export default function Dashboard({ userCurrentOcc, userFutureOcc }) {
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
   const [dataSMessage, setDataSMessage] = useState("");
-  const [dataFMessage, setDataFMessage] = useState("");
 
   const getOccupation = db.collection("users").doc(user.uid);
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    return getOccupation
-      .update({
-        currentOcc: updateCurrent,
-        futureOcc: updateFuture,
-      })
-      .then(() => {
-        setDataSMessage("Profile successfully updated! 🙂");
-        setUpdateCurrent("");
-        setUpdateFuture("");
-      })
-      .catch((error) => {
-        // The document probably doesn't exist.
-        setDataFMessage(`Error updating profile! ${error}`);
-      });
+    getOccupation.update({
+      currentOcc: updateCurrent,
+      futureOcc: updateFuture,
+    });
+    setDataSMessage("Successfully Updated, Refresh Now! 🙂");
+    setUpdateCurrent("");
+    setUpdateFuture("");
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setDataFMessage("");
-      setDataSMessage("");
-    }, 25000);
-  }, [getOccupation]);
 
   return (
     <>
@@ -109,19 +94,9 @@ export default function Dashboard({ userCurrentOcc, userFutureOcc }) {
                     </div>
                     <div className="modal-body">
                       <div className="formBx">
-                        {dataSMessage === "" ? (
-                          <div></div>
-                        ) : (
+                        {dataSMessage && (
                           <div className="message bg-success text-light p-2 my-2">
                             {dataSMessage}
-                          </div>
-                        )}
-
-                        {dataFMessage === "" ? (
-                          <div></div>
-                        ) : (
-                          <div className="message bg-success text-light p-2 my-2">
-                            {dataFMessage}
                           </div>
                         )}
                         <form

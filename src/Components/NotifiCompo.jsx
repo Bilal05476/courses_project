@@ -6,20 +6,13 @@ import { auth } from "../Firebase";
 import { useState } from "react";
 import "./css/dashpro.css";
 import { useStateValue } from "../StateProvider";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const NotifiCompo = ({ userGender, userName }) => {
   const [{}, dispatch] = useStateValue();
-
-  // const getUserName = db.collection("users").doc(user.uid);
-  // useEffect(() => {
-  //   return getUserName.get().then((doc) => {
-  //     setUserName(doc.data().name);
-  //     setUserGender(doc.data().gender);
-  //   });
-  // }, [user, getUserName]);
+  const history = useHistory();
 
   const signOut = (e) => {
     e.preventDefault();
@@ -31,6 +24,7 @@ const NotifiCompo = ({ userGender, userName }) => {
           user: result,
         });
         localStorage.setItem("user", null);
+        history.push("/");
       })
       .catch((error) => {
         alert(error);
@@ -97,7 +91,7 @@ const NotifiCompo = ({ userGender, userName }) => {
       >
         <div className="accounts__details">
           <h5 className="my-4">Account Details</h5>
-          <NavLink className="profilePopup text-center" to="/profile">
+          <NavLink className="profilePopup text-center" to={`/${userName}`}>
             <PersonIcon /> Profile
           </NavLink>
           <hr />

@@ -58,7 +58,7 @@ const DashBoardProject = ({
                     <PythonCourse />
                   </div>
                 </Route>
-                <Route path="/profile" exact>
+                <Route path="/:path" exact>
                   <div className="dashComp">
                     <Profile
                       userName={userName}
