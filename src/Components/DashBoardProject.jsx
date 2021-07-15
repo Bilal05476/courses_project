@@ -11,7 +11,14 @@ import PythonCourse from "./Courses/PythonCourse";
 import Profile from "./Profile";
 import { useStateValue } from "../StateProvider";
 
-const DashBoardProject = () => {
+const DashBoardProject = ({
+  userName,
+  userEmail,
+  userGender,
+  userCurrentOcc,
+  userFutureOcc,
+  userSkills,
+}) => {
   const [{ user }] = useStateValue();
   return (
     <>
@@ -23,7 +30,14 @@ const DashBoardProject = () => {
         <>
           {/* <Sidebar /> */}
           <div>
-            <AppNavbar />
+            <AppNavbar
+              userName={userName}
+              userEmail={userEmail}
+              userGender={userGender}
+              userCurrentOcc={userCurrentOcc}
+              userFutureOcc={userFutureOcc}
+              userSkills={userSkills}
+            />
             <div className="dash">
               <div className="sidebarComp">
                 <Sidebar />
@@ -31,7 +45,14 @@ const DashBoardProject = () => {
               <Switch>
                 <Route path="/" exact>
                   <div className="dashComp">
-                    <Dashboard />
+                    <Dashboard
+                      userName={userName}
+                      userEmail={userEmail}
+                      userGender={userGender}
+                      userCurrentOcc={userCurrentOcc}
+                      userFutureOcc={userFutureOcc}
+                      userSkills={userSkills}
+                    />
                   </div>
                 </Route>
                 <Route path="/staticwebcourse" exact>
@@ -51,7 +72,14 @@ const DashBoardProject = () => {
                 </Route>
                 <Route path="/profile" exact>
                   <div className="dashComp">
-                    <Profile />
+                    <Profile
+                      userName={userName}
+                      userEmail={userEmail}
+                      userGender={userGender}
+                      userCurrentOcc={userCurrentOcc}
+                      userFutureOcc={userFutureOcc}
+                      userSkills={userSkills}
+                    />
                   </div>
                 </Route>
               </Switch>
