@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
 import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
@@ -16,13 +16,14 @@ import "./css/Profile.css";
 import Skills from "./Skills";
 import SkillsForm from "./SkillsForm";
 
-const Profile = () => {
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userCurrent, setUserCurrent] = useState("");
-  const [userFuture, setUserFuture] = useState("");
-  const [userGender, setUserGender] = useState("");
-  const [userSkills, setUserSkills] = useState([]);
+const Profile = ({
+  userName,
+  userEmail,
+  userGender,
+  userCurrentOcc,
+  userFutureOcc,
+  userSkills,
+}) => {
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
   const [updateName, setUpdateName] = useState("");
@@ -33,17 +34,6 @@ const Profile = () => {
   const [toggleSkillBtn, setToggleSkillBtn] = useState(false);
   const [{ user }] = useStateValue();
   const getUserData = db.collection("users").doc(user.uid);
-
-  useEffect(() => {
-    return getUserData.get().then((doc) => {
-      setUserName(doc.data().name);
-      setUserEmail(doc.data().email);
-      setUserCurrent(doc.data().currentOcc);
-      setUserFuture(doc.data().futureOcc);
-      setUserGender(doc.data().gender);
-      setUserSkills(doc.data().skills);
-    });
-  }, [user, getUserData]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -95,86 +85,83 @@ const Profile = () => {
         <div className="col-md-12">
           {toggleModal && (
             <div className="" role="document">
-              <div className="modal-header">
+              <div className="modal-header"></div>
+              <div className="modal-body px-0">
+                <div className="formBx">
+                  {dataSMessage === "" ? (
+                    <div></div>
+                  ) : (
+                    <div
+                      className="message bg-success text-light p-2 my-2"
+                      style={{ borderRadius: "0.4rem" }}
+                    >
+                      {dataSMessage}
+                    </div>
+                  )}
 
-              </div>
-                <div className="modal-body px-0">
-                  <div className="formBx">
-                    {dataSMessage === "" ? (
-                      <div></div>
-                    ) : (
-                      <div
-                        className="message bg-success text-light p-2 my-2"
-                        style={{ borderRadius: "0.4rem" }}
+                  {dataFMessage === "" ? (
+                    <div></div>
+                  ) : (
+                    <div
+                      className="message bg-danger text-light p-2 my-2"
+                      style={{ borderRadius: "0.4rem" }}
+                    >
+                      {dataFMessage}
+                    </div>
+                  )}
+                  <form className="editDetailsForm px-3 " onSubmit={onSubmit}>
+                    <h2 className="text-dark" style={{ fontWeight: "800" }}>
+                      Edit Profile
+                    </h2>
+                    <input
+                      className="mt-3 p-2"
+                      value={updateName}
+                      onChange={(e) => setUpdateName(e.target.value)}
+                      type="text"
+                      placeholder="Name"
+                      required
+                    />
+
+                    <input
+                      className="mt-3 p-2"
+                      value={updateCurrent}
+                      onChange={(e) => setUpdateCurrent(e.target.value)}
+                      type="text"
+                      placeholder="I am currently a/an"
+                      required
+                    />
+                    <input
+                      className="mt-3 p-2"
+                      value={updateFuture}
+                      onChange={(e) => setUpdateFuture(e.target.value)}
+                      type="text"
+                      placeholder="I want to become a/an"
+                      required
+                    />
+                    <input
+                      className="mt-3 p-2"
+                      value={addSkills}
+                      onChange={(e) => setAddSkills(e.target.value)}
+                      type="text"
+                      placeholder="Add skill"
+                      required
+                    />
+
+                    <div className="submitButton my-3">
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        className="courseBtn text-light"
+                        style={{
+                          outline: "none",
+                        }}
                       >
-                        {dataSMessage}
-                      </div>
-                    )}
-
-                    {dataFMessage === "" ? (
-                      <div></div>
-                    ) : (
-                      <div
-                        className="message bg-danger text-light p-2 my-2"
-                        style={{ borderRadius: "0.4rem" }}
-                      >
-                        {dataFMessage}
-                      </div>
-                    )}
-                    <form className="editDetailsForm px-3 " onSubmit={onSubmit}>
-                      <h2 className="text-dark" style={{ fontWeight: "800" }}>
-                        Edit Profile
-                      </h2>
-                      <input
-                        className="mt-3 p-2"
-                        value={updateName}
-                        onChange={(e) => setUpdateName(e.target.value)}
-                        type="text"
-                        placeholder="Name"
-                        required
-                      />
-
-                      <input
-                        className="mt-3 p-2"
-                        value={updateCurrent}
-                        onChange={(e) => setUpdateCurrent(e.target.value)}
-                        type="text"
-                        placeholder="I am currently a/an"
-                        required
-                      />
-                      <input
-                        className="mt-3 p-2"
-                        value={updateFuture}
-                        onChange={(e) => setUpdateFuture(e.target.value)}
-                        type="text"
-                        placeholder="I want to become a/an"
-                        required
-                      />
-                      <input
-                        className="mt-3 p-2"
-                        value={addSkills}
-                        onChange={(e) => setAddSkills(e.target.value)}
-                        type="text"
-                        placeholder="Add skill"
-                        required
-                      />
-
-                      <div className="submitButton my-3">
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          className="courseBtn text-light"
-                          style={{
-                            outline: "none",
-                          }}
-                        >
-                          Save Changes
-                        </Button>
-                      </div>
-                    </form>
-                  </div>
+                        Save Changes
+                      </Button>
+                    </div>
+                  </form>
                 </div>
-             
+              </div>
             </div>
           )}
         </div>
@@ -237,7 +224,7 @@ const Profile = () => {
         <div className="right__profile col-md-9">
           <div className="profileNameAndOccu">
             <h4>{userName}</h4>
-            <strong>{userCurrent}</strong>
+            <strong>{userCurrentOcc}</strong>
           </div>
           <div className="profileAbout">
             <h6 className="aboutName d-flex align-items-center">
@@ -260,13 +247,13 @@ const Profile = () => {
                 <strong className="aboutLabelIcon">
                   <WorkIcon /> Current Occupation
                 </strong>
-                <strong className="userDataGet">{userCurrent}</strong>
+                <strong className="userDataGet">{userCurrentOcc}</strong>
               </div>
               <div className="aboutUser">
                 <strong className="aboutLabelIcon">
                   <HighlightIcon /> Future Plan
                 </strong>
-                <strong className="userDataGet">{userFuture}</strong>
+                <strong className="userDataGet">{userFutureOcc}</strong>
               </div>
               <div className="aboutUser">
                 <strong className="aboutLabelIcon">
