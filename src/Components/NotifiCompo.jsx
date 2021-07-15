@@ -2,26 +2,24 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import Popover from "@material-ui/core/Popover";
 import Button from "@material-ui/core/Button";
-import { useState, useEffect } from "react";
-import { db, auth } from "../Firebase";
+import { auth } from "../Firebase";
+import { useState } from "react";
 import "./css/dashpro.css";
 import { useStateValue } from "../StateProvider";
 import { NavLink } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const NotifiCompo = () => {
-  const [userName, setUserName] = useState("");
-  const [userGender, setUserGender] = useState("");
-  const [{ user }, dispatch] = useStateValue();
+const NotifiCompo = ({ userGender, userName }) => {
+  const [{}, dispatch] = useStateValue();
 
-  const getUserName = db.collection("users").doc(user.uid);
-  useEffect(() => {
-    return getUserName.get().then((doc) => {
-      setUserName(doc.data().name);
-      setUserGender(doc.data().gender);
-    });
-  }, [user, getUserName]);
+  // const getUserName = db.collection("users").doc(user.uid);
+  // useEffect(() => {
+  //   return getUserName.get().then((doc) => {
+  //     setUserName(doc.data().name);
+  //     setUserGender(doc.data().gender);
+  //   });
+  // }, [user, getUserName]);
 
   const signOut = (e) => {
     e.preventDefault();

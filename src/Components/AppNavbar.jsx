@@ -35,7 +35,10 @@ const logoVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
 };
 
-function AppNavbar() {
+function AppNavbar({
+  userName,
+  userGender,
+}) {
   const [state, setState] = useState({
     left: false,
   });
@@ -121,7 +124,11 @@ function AppNavbar() {
           <div className="px-5">For Students</div>
         </div>
         <div className="notifi__lg">
-          <NotifiCompo />
+          <NotifiCompo
+            userName={userName}
+            userGender={userGender}
+           
+          />
         </div>
       </div>
     </AppBar>

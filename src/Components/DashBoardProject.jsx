@@ -7,7 +7,6 @@ import { Switch, Route } from "react-router-dom";
 import StaticWebCourse from "./Courses/StaticWebCourse";
 import ReactWebCourse from "./Courses/ReactWebCourse";
 import PythonCourse from "./Courses/PythonCourse";
-// import Certificate from "./Courses/Certifacate";
 import Profile from "./Profile";
 import { useStateValue } from "../StateProvider";
 
@@ -30,14 +29,7 @@ const DashBoardProject = ({
         <>
           {/* <Sidebar /> */}
           <div>
-            <AppNavbar
-              userName={userName}
-              userEmail={userEmail}
-              userGender={userGender}
-              userCurrentOcc={userCurrentOcc}
-              userFutureOcc={userFutureOcc}
-              userSkills={userSkills}
-            />
+            <AppNavbar userName={userName} userGender={userGender} />
             <div className="dash">
               <div className="sidebarComp">
                 <Sidebar />
@@ -46,12 +38,8 @@ const DashBoardProject = ({
                 <Route path="/" exact>
                   <div className="dashComp">
                     <Dashboard
-                      userName={userName}
-                      userEmail={userEmail}
-                      userGender={userGender}
                       userCurrentOcc={userCurrentOcc}
                       userFutureOcc={userFutureOcc}
-                      userSkills={userSkills}
                     />
                   </div>
                 </Route>

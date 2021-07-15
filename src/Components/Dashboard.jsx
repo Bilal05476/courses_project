@@ -10,10 +10,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 // import TextField from "@material-ui/core/TextField";
 
-export default function Dashboard() {
+export default function Dashboard({ userCurrentOcc, userFutureOcc }) {
   const [{ user }] = useStateValue();
-  const [currently, setCurrently] = useState("");
-  const [futuree, setFuturee] = useState("");
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
   const [dataSMessage, setDataSMessage] = useState("");
@@ -37,13 +35,6 @@ export default function Dashboard() {
         setDataFMessage(`Error updating profile! ${error}`);
       });
   };
-
-  useEffect(() => {
-    return getOccupation.get().then((doc) => {
-      setCurrently(doc.data().currentOcc);
-      setFuturee(doc.data().futureOcc);
-    });
-  }, [user, getOccupation]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -74,13 +65,13 @@ export default function Dashboard() {
               <br />
               <h6 className="currentInfo">
                 I am currently a/an{" "}
-                <strong className="current">{currently}</strong>
+                <strong className="current">{userCurrentOcc}</strong>
               </h6>
 
               <br />
               <h6 className="futureInfo">
                 I want to become a/an{" "}
-                <strong className="future">{futuree}</strong>
+                <strong className="future">{userFutureOcc}</strong>
               </h6>
               <br />
               <Button
