@@ -75,16 +75,7 @@ export default function HomeTabs() {
       </AppBar>
       <TabPanel value={value} index={0} className="p-0">
         <CoursePaper
-          level="Beginner vevel"
-          courseName="Static Website Development"
-          courseDetails="It looks like you missed some important deadlines. Reset your
-                deadlines and get started today."
-          courseLink="/staticwebcourse"
-        />
-      </TabPanel>
-      <TabPanel value={value} index={1} className="p-0">
-        <CoursePaper
-          level="Beginner vevel"
+          level="Beginner level"
           courseName="Static Website Development"
           courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
@@ -98,12 +89,35 @@ export default function HomeTabs() {
           courseLink="/reactwebcourse"
         />
         <CoursePaper
-          level="Beginner vevel"
+          level="Beginner level"
           courseName="Python Development"
           courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
           courseLink="/pythoncourse"
         />
+      </TabPanel>
+      <TabPanel value={value} index={1} className="p-0">
+        {/* <CoursePaper
+          level="Beginner level"
+          courseName="Static Website Development"
+          courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+          courseLink="/staticwebcourse"
+        />
+        <CoursePaper
+          level="Intermediate level"
+          courseName="React Website Development"
+          courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+          courseLink="/reactwebcourse"
+        />
+        <CoursePaper
+          level="Beginner level"
+          courseName="Python Development"
+          courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+          courseLink="/pythoncourse"
+        /> */}
       </TabPanel>
     </div>
   );
