@@ -11,8 +11,9 @@ const App = () => {
   const [userCurrentOcc, setUserCurrentOcc] = useState("");
   const [userFutureOcc, setUserFutureOcc] = useState("");
   const [userSkills, setUserSkills] = useState([]);
+  const [userCourses, setUserCourses] = useState([]);
 
-  if (user) {
+  if (user || !userCourses) {
     const getUserData = db.collection("users").doc(user.uid);
     getUserData.get().then((doc) => {
       setUserName(doc.data().name);
@@ -21,8 +22,10 @@ const App = () => {
       setUserCurrentOcc(doc.data().currentOcc);
       setUserFutureOcc(doc.data().futureOcc);
       setUserSkills(doc.data().skills);
+      setUserSkills(doc.data().courseEnrollments);
     });
   }
+  
   return (
     <DashBoardProject
       userName={userName}
@@ -31,6 +34,7 @@ const App = () => {
       userCurrentOcc={userCurrentOcc}
       userFutureOcc={userFutureOcc}
       userSkills={userSkills}
+      userCourses={userCourses}
     />
   );
 };

@@ -17,6 +17,7 @@ const DashBoardProject = ({
   userCurrentOcc,
   userFutureOcc,
   userSkills,
+  userCourses
 }) => {
   const [{ user }] = useStateValue();
   return (
@@ -67,6 +68,7 @@ const DashBoardProject = ({
                       userCurrentOcc={userCurrentOcc}
                       userFutureOcc={userFutureOcc}
                       userSkills={userSkills}
+                      userCourses={userCourses}
                     />
                   </div>
                 </Route>

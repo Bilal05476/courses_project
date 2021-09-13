@@ -97,6 +97,10 @@ export default function HomeTabs() {
         />
       </TabPanel>
       <TabPanel value={value} index={1} className="p-0">
+        <p className="text-center">
+          Oops, You are not enrolled in any course yet 🙁{" "}
+        </p>
+
         {/* <CoursePaper
           level="Beginner level"
           courseName="Static Website Development"

@@ -23,6 +23,7 @@ const Profile = ({
   userCurrentOcc,
   userFutureOcc,
   userSkills,
+  userCourses,
 }) => {
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
@@ -64,6 +65,8 @@ const Profile = ({
         setDataFMessage(`Error updating profile! ${error}`);
       });
   };
+
+  // console.log(userCourses)
 
   return (
     <div className="profile">
@@ -188,9 +191,13 @@ const Profile = ({
           <h6 className="coursesAssign d-flex align-items-center">
             <LaptopChromebookIcon className="mr-2" /> Courses Assign
           </h6>
-          <strong>Static Website Development</strong> <br />
+          {userCourses.map((item, ind) => {
+            alert(item)
+            return <strong key={ind}>{item ? item : ""}</strong>;
+          })}
+          {/* <strong>Static Website Development</strong> <br />
           <strong>React Website Development</strong> <br />
-          <strong>Python Programming</strong> <br />
+          <strong>Python Programming</strong> <br /> */}
           <h6 className="skills d-flex align-items-center">
             <AssignmentTurnedInIcon className="mr-2" /> Skills
             <Button
