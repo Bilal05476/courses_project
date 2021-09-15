@@ -10,7 +10,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 // import TextField from "@material-ui/core/TextField";
 
-export default function Dashboard({ userCurrentOcc, userFutureOcc }) {
+export default function Dashboard({ userCurrentOcc, userFutureOcc, userCourses }) {
   const [{ user }] = useStateValue();
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
@@ -143,7 +143,7 @@ export default function Dashboard({ userCurrentOcc, userFutureOcc }) {
         </Paper>
         <div className="row">
           <div className="col-md-12">
-            <HomeTabs />
+            <HomeTabs userCourses={userCourses} />
           </div>
         </div>
       </div>

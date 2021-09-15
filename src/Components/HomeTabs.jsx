@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HomeTabs() {
+export default function HomeTabs({ userCourses }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -97,10 +97,36 @@ export default function HomeTabs() {
         />
       </TabPanel>
       <TabPanel value={value} index={1} className="p-0">
-        <p className="text-center">
-          Oops, You are not enrolled in any course yet 🙁{" "}
-        </p>
-
+        {userCourses.length < 0 && (
+          <p className="text-center">
+            Oops, You are not enrolled in any course yet 🙁{" "}
+          </p>
+        )}
+        {userCourses.map((item, key) => {
+          return (
+            <>
+              {item === "Static Website Development" ? (
+                <CoursePaper
+                  level="Beginner level"
+                  courseName="Static Website Development"
+                  courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+                  courseLink="/staticwebcourse"
+                />
+              ) : item === "Python Programming" ? (
+                <CoursePaper
+                  level="Beginner level"
+                  courseName="Python Development"
+                  courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+                  courseLink="/pythoncourse"
+                />
+              ) : (
+                ""
+              )}
+            </>
+          );
+        })}
         {/* <CoursePaper
           level="Beginner level"
           courseName="Static Website Development"

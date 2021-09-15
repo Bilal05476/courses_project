@@ -1,5 +1,5 @@
 import DashBoardProject from "./Components/DashBoardProject";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { db } from "./Firebase";
 import { useStateValue } from "./StateProvider";
 
@@ -13,7 +13,7 @@ const App = () => {
   const [userSkills, setUserSkills] = useState([]);
   const [userCourses, setUserCourses] = useState([]);
 
-  if (user || !userCourses) {
+  useEffect(() => {
     const getUserData = db.collection("users").doc(user.uid);
     getUserData.get().then((doc) => {
       setUserName(doc.data().name);
@@ -22,10 +22,10 @@ const App = () => {
       setUserCurrentOcc(doc.data().currentOcc);
       setUserFutureOcc(doc.data().futureOcc);
       setUserSkills(doc.data().skills);
-      setUserSkills(doc.data().courseEnrollments);
+      setUserCourses(doc.data().courseEnrollments);
     });
-  }
-  
+  }, []);
+
   return (
     <DashBoardProject
       userName={userName}

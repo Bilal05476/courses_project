@@ -66,8 +66,6 @@ const Profile = ({
       });
   };
 
-  // console.log(userCourses)
-
   return (
     <div className="profile">
       <div className="row">
@@ -192,12 +190,12 @@ const Profile = ({
             <LaptopChromebookIcon className="mr-2" /> Courses Assign
           </h6>
           {userCourses.map((item, ind) => {
-            alert(item)
-            return <strong key={ind}>{item ? item : ""}</strong>;
+            return (
+              <>
+                <strong key={ind}>{item}</strong> <br />
+              </>
+            );
           })}
-          {/* <strong>Static Website Development</strong> <br />
-          <strong>React Website Development</strong> <br />
-          <strong>Python Programming</strong> <br /> */}
           <h6 className="skills d-flex align-items-center">
             <AssignmentTurnedInIcon className="mr-2" /> Skills
             <Button
