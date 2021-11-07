@@ -45,6 +45,7 @@ const Courses = (props) => {
             allowFullScreen
             className="videoFrame"
           ></iframe>
+          
         </div>
 
         <div className="col-md-4">

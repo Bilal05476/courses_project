@@ -15,7 +15,7 @@
   /* top: 0;
   bottom: 0; */
   height: 100%;
-  width: 300px;
+  width: 270px;
   /* overflow-y: auto; */
 }
 /* width */
@@ -39,7 +39,7 @@
 }
 
 .dashComp {
-  margin-left: 18.5rem;
+  margin-left: 16.5rem;
   margin-top: 5rem;
   width: 100%;
 }

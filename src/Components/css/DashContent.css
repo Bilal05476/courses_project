@@ -9,6 +9,10 @@
 
 .learningHeader {
   border-top: 0.5rem solid #1b193f;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 .learningPaper {
   background-image: url("../../img/learningPaperBack.jpg");

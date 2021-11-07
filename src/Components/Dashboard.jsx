@@ -10,7 +10,11 @@ import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 // import TextField from "@material-ui/core/TextField";
 
-export default function Dashboard({ userCurrentOcc, userFutureOcc, userCourses }) {
+export default function Dashboard({
+  userCurrentOcc,
+  userFutureOcc,
+  userCourses,
+}) {
   const [{ user }] = useStateValue();
   const [updateCurrent, setUpdateCurrent] = useState("");
   const [updateFuture, setUpdateFuture] = useState("");
@@ -33,43 +37,48 @@ export default function Dashboard({ userCurrentOcc, userFutureOcc, userCourses }
       <div className="dashboard__content">
         <Paper className="row mx-1 my-4 px-2 learningPaper">
           <div
-            className="col-md-6 my-3"
+            className="col-md-4 my-3"
             style={{
               display: "flex",
               alignItems: "flex-end",
               color: "#1b193f",
             }}
           >
-            <Typography className="typo welcome" variant="h3">
+            <Typography className="typo welcome" variant="h4">
               Welcome back!
             </Typography>
           </div>
-          <div className="col-md-6 my-3">
+          <div className="col-md-8 my-3">
             <Paper className="learning learningHeader p-3">
-              <h6 className="typo">My Learning Profile</h6>
-              <br />
-              <h6 className="currentInfo">
-                I am currently a/an{" "}
-                <strong className="current">{userCurrentOcc}</strong>
-              </h6>
+              <div>
+                <h6 className="typo">My Learning Profile</h6>
+                <br />
+                <h6 className="currentInfo">
+                  I am currently a/an{" "}
+                  <strong className="current">{userCurrentOcc}</strong>
+                </h6>
 
-              <br />
-              <h6 className="futureInfo">
-                I want to become a/an{" "}
-                <strong className="future">{userFutureOcc}</strong>
-              </h6>
-              <br />
-              <Button
-                data-toggle="modal"
-                data-target="#profileModal"
-                variant="contained"
-                className="courseBtn text-light"
-                style={{
-                  outline: "none",
-                }}
-              >
-                Edit your profile
-              </Button>
+                <br />
+                <h6 className="futureInfo">
+                  I want to become a/an{" "}
+                  <strong className="future">{userFutureOcc}</strong>
+                </h6>
+                <br />
+                <Button
+                  data-toggle="modal"
+                  data-target="#profileModal"
+                  variant="contained"
+                  className="courseBtn text-light"
+                  style={{
+                    outline: "none",
+                  }}
+                >
+                  Edit your profile
+                </Button>
+              </div>
+              <div>
+                <small>B-A TECHNOS</small>
+              </div>
               <div
                 className="modal fade"
                 style={{ marginTop: "8rem" }}

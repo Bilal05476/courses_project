@@ -1,4 +1,6 @@
 import Courses from "./Courses";
+import gitOverview from "./video/final-git-overview.mp4";
+import gitInstall from "./video/final-git-install.mp4";
 
 const StaticWebCourse = () => {
   return (
@@ -9,10 +11,10 @@ const StaticWebCourse = () => {
       fourthAccordion="Dynamic Web with JS"
       videoIntro="https://www.youtube.com/embed/cocJx3ZZwOM"
       introName="Introduction"
-      videoGit="https://www.youtube.com/embed/oc1T4aNAYVc"
-      gitName="Git"
-      videoGithub="https://www.youtube.com/embed/s9-ypLPhqro"
-      githubName="Github Desktop"
+      videoGit={gitOverview}
+      gitName="Git Overview"
+      videoGithub={gitInstall}
+      githubName="Git Install & Github"
       videoVsCode="https://www.youtube.com/embed/s9-ypLPhqro"
       IDEName="VS Code (IDE)"
     />

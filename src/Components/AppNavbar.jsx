@@ -104,7 +104,7 @@ function AppNavbar({
                 variant="h6"
                 noWrap
               >
-                BATECHNOS
+                B-A TECHNOS
               </motion.Typography>
             </div>
           </div>
