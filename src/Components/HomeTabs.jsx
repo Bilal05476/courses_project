@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -59,6 +59,21 @@ export default function HomeTabs({ userCourses }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  useEffect(() => {
+    for (const prop in userCourses) {
+      if (userCourses[prop] === "Static Website Development") {
+        setStaticC(true);
+      } else if (userCourses[prop] === "React Website Development") {
+        setReact(true);
+      } else if (userCourses[prop] === "Python Development") {
+        setPython(true);
+      } else {
+        setPython(false);
+        setReact(false);
+        setStaticC(false);
+      }
+    }
+  }, [userCourses]);
 
   return (
     <div className={classes.root}>
@@ -100,56 +115,37 @@ export default function HomeTabs({ userCourses }) {
         />
       </TabPanel>
       <TabPanel value={value} index={1} className="p-0">
-        {userCourses.length === 0 ? (
+        {userCourses.length === 0 && (
           <p className="text-center">
             Oops, You are not enrolled in any course yet 🙁{" "}
           </p>
-        ) : (
-          <>
-            {userCourses.map((item, ind) => {
-              if (item === "Python Programming") {
-                setPython(true);
-              }
-              if (item === "Static Website Development") {
-                setStaticC(true);
-              }
-              if (item === "React Website Development") {
-                setReact(true);
-              }
-
-              return (
-                <div key={ind}>
-                  {python && (
-                    <CoursePaper
-                      level="Beginner level"
-                      courseName="Python Development"
-                      courseDetails="It looks like you missed some important deadlines. Reset your
+        )}
+        {python && (
+          <CoursePaper
+            level="Beginner level"
+            courseName="Python Development"
+            courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
-                      courseLink="/pythoncourse"
-                    />
-                  )}
-                  {staticC && (
-                    <CoursePaper
-                      level="Beginner level"
-                      courseName="Static Website Development"
-                      courseDetails="It looks like you missed some important deadlines. Reset your
+            courseLink="/pythoncourse"
+          />
+        )}
+        {staticC && (
+          <CoursePaper
+            level="Beginner level"
+            courseName="Static Website Development"
+            courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
-                      courseLink="/staticwebcourse"
-                    />
-                  )}
-                  {react && (
-                    <CoursePaper
-                      level="Intermediate level"
-                      courseName="React Website Development"
-                      courseDetails="It looks like you missed some important deadlines. Reset your
+            courseLink="/staticwebcourse"
+          />
+        )}
+        {react && (
+          <CoursePaper
+            level="Intermediate level"
+            courseName="React Website Development"
+            courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
-                      courseLink="/reactwebcourse"
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </>
+            courseLink="/reactwebcourse"
+          />
         )}
       </TabPanel>
     </div>

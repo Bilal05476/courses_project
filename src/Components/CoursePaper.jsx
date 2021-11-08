@@ -5,9 +5,20 @@ import "./css/DashContent.css";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import PublicIcon from "@material-ui/icons/Public";
+import { db } from "../Firebase";
+import { useStateValue } from "../StateProvider";
 
 const CoursePaper = (props) => {
+  const [{ user }] = useStateValue();
+
   const [courseEnroll, setCourseEnroll] = useState(false);
+  const getUserData = db.collection("users").doc(user.uid);
+
+  const handleCourseEnroll = (co) => {
+    return getUserData.update({
+      courseEnrollments: co,
+    });
+  };
 
   return (
     <Paper className="my-3">
@@ -44,7 +55,7 @@ const CoursePaper = (props) => {
               style={{
                 outline: "none",
               }}
-              onClick={() => setCourseEnroll(true)}
+              onClick={() => handleCourseEnroll(props.courseName)}
             >
               Enroll Now
             </Button>
