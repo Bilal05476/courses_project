@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,6 +11,7 @@ import CoursePaper from "./CoursePaper";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+ 
 
   return (
     <div
@@ -51,7 +52,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HomeTabs({ userCourses }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+   const [static, setStatic] = useState(false);
+   const [react, setReact] = useState(false);
+   const [python, setPython] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -97,57 +101,58 @@ export default function HomeTabs({ userCourses }) {
         />
       </TabPanel>
       <TabPanel value={value} index={1} className="p-0">
-        {userCourses.length < 0 && (
+        {userCourses.length < 0 ? (
           <p className="text-center">
             Oops, You are not enrolled in any course yet 🙁{" "}
           </p>
+        ) : (
+          <>
+            {userCourses.map((item, ind) => {
+              for (course in item) {
+                if (course === "Python Programming") {
+                  setPython(true);
+                }
+                if (course === "Static Website Development") {
+                  setStatic(true);
+                }
+                if (course === "React Website Development") {
+                  setReact(true);
+                }
+              }
+              return (
+                <div key={ind}>
+                  {python && (
+                    <CoursePaper
+                      level="Beginner level"
+                      courseName="Python Development"
+                      courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+                      courseLink="/pythoncourse"
+                    />
+                  )}
+                  {static && (
+                    <CoursePaper
+                      level="Beginner level"
+                      courseName="Static Website Development"
+                      courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+                      courseLink="/staticwebcourse"
+                    />
+                  )}
+                  {react && (
+                    <CoursePaper
+                      level="Intermediate level"
+                      courseName="React Website Development"
+                      courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+                      courseLink="/reactwebcourse"
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </>
         )}
-        {userCourses.map((item, key) => {
-          return (
-            <>
-              {item === "Static Website Development" ? (
-                <CoursePaper
-                  level="Beginner level"
-                  courseName="Static Website Development"
-                  courseDetails="It looks like you missed some important deadlines. Reset your
-                deadlines and get started today."
-                  courseLink="/staticwebcourse"
-                />
-              ) : item === "Python Programming" ? (
-                <CoursePaper
-                  level="Beginner level"
-                  courseName="Python Development"
-                  courseDetails="It looks like you missed some important deadlines. Reset your
-                deadlines and get started today."
-                  courseLink="/pythoncourse"
-                />
-              ) : (
-                ""
-              )}
-            </>
-          );
-        })}
-        {/* <CoursePaper
-          level="Beginner level"
-          courseName="Static Website Development"
-          courseDetails="It looks like you missed some important deadlines. Reset your
-                deadlines and get started today."
-          courseLink="/staticwebcourse"
-        />
-        <CoursePaper
-          level="Intermediate level"
-          courseName="React Website Development"
-          courseDetails="It looks like you missed some important deadlines. Reset your
-                deadlines and get started today."
-          courseLink="/reactwebcourse"
-        />
-        <CoursePaper
-          level="Beginner level"
-          courseName="Python Development"
-          courseDetails="It looks like you missed some important deadlines. Reset your
-                deadlines and get started today."
-          courseLink="/pythoncourse"
-        /> */}
       </TabPanel>
     </div>
   );

@@ -13,7 +13,7 @@ const App = () => {
   const [userSkills, setUserSkills] = useState([]);
   const [userCourses, setUserCourses] = useState([]);
 
-  useEffect(() => {
+  if (user) {
     const getUserData = db.collection("users").doc(user.uid);
     getUserData.get().then((doc) => {
       setUserName(doc.data().name);
@@ -24,7 +24,7 @@ const App = () => {
       setUserSkills(doc.data().skills);
       setUserCourses(doc.data().courseEnrollments);
     });
-  }, []);
+  }
 
   return (
     <DashBoardProject
