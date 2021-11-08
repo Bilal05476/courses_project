@@ -11,7 +11,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const NotifiCompo = ({ userGender, userName }) => {
-  const [{}, dispatch] = useStateValue();
+  const [dispatch] = useStateValue();
   const history = useHistory();
 
   const signOut = (e) => {

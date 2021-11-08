@@ -189,6 +189,11 @@ const Profile = ({
           <h6 className="coursesAssign d-flex align-items-center">
             <LaptopChromebookIcon className="mr-2" /> Courses Assign
           </h6>
+          {userCourses.length === 0 && (
+            <small className="text-center">
+              Oops, You are not enrolled in any course yet 🙁{" "}
+            </small>
+          )}
           {userCourses.map((item, ind) => {
             return (
               <>

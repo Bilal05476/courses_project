@@ -2,7 +2,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import "./css/dashpro.css";
 import "./css/DashContent.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
 import HomeTabs from "./HomeTabs";

@@ -1,5 +1,5 @@
 import DashBoardProject from "./Components/DashBoardProject";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { db } from "./Firebase";
 import { useStateValue } from "./StateProvider";
 
@@ -25,7 +25,7 @@ const App = () => {
       setUserCourses(doc.data().courseEnrollments);
     });
   }
-
+  console.log("user course: ", userCourses);
   return (
     <DashBoardProject
       userName={userName}

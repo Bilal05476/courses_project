@@ -11,7 +11,6 @@ import CoursePaper from "./CoursePaper";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
- 
 
   return (
     <div
@@ -53,9 +52,9 @@ const useStyles = makeStyles((theme) => ({
 export default function HomeTabs({ userCourses }) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
-   const [static, setStatic] = useState(false);
-   const [react, setReact] = useState(false);
-   const [python, setPython] = useState(false);
+  const [staticC, setStaticC] = useState(false);
+  const [react, setReact] = useState(false);
+  const [python, setPython] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -101,24 +100,23 @@ export default function HomeTabs({ userCourses }) {
         />
       </TabPanel>
       <TabPanel value={value} index={1} className="p-0">
-        {userCourses.length < 0 ? (
+        {userCourses.length === 0 ? (
           <p className="text-center">
             Oops, You are not enrolled in any course yet 🙁{" "}
           </p>
         ) : (
           <>
             {userCourses.map((item, ind) => {
-              for (course in item) {
-                if (course === "Python Programming") {
-                  setPython(true);
-                }
-                if (course === "Static Website Development") {
-                  setStatic(true);
-                }
-                if (course === "React Website Development") {
-                  setReact(true);
-                }
+              if (item === "Python Programming") {
+                setPython(true);
               }
+              if (item === "Static Website Development") {
+                setStaticC(true);
+              }
+              if (item === "React Website Development") {
+                setReact(true);
+              }
+
               return (
                 <div key={ind}>
                   {python && (
@@ -130,7 +128,7 @@ export default function HomeTabs({ userCourses }) {
                       courseLink="/pythoncourse"
                     />
                   )}
-                  {static && (
+                  {staticC && (
                     <CoursePaper
                       level="Beginner level"
                       courseName="Static Website Development"
