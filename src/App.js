@@ -12,19 +12,17 @@ const App = () => {
   const [userFutureOcc, setUserFutureOcc] = useState("");
   const [userSkills, setUserSkills] = useState([]);
   const [userCourses, setUserCourses] = useState([]);
-  useEffect(() => {
-    const getUserData = db.collection("users").doc(user.uid);
-    getUserData.get().then((doc) => {
-      setUserName(doc.data().name);
-      setUserEmail(doc.data().email);
-      setUserGender(doc.data().gender);
-      setUserCurrentOcc(doc.data().currentOcc);
-      setUserFutureOcc(doc.data().futureOcc);
-      setUserSkills(doc.data().skills);
-      setUserCourses(doc.data().courseEnrollments);
-    });
-  }, []);
 
+  const getUserData = db.collection("users").doc(user.uid);
+  getUserData.get().then((doc) => {
+    setUserName(doc.data().name);
+    setUserEmail(doc.data().email);
+    setUserGender(doc.data().gender);
+    setUserCurrentOcc(doc.data().currentOcc);
+    setUserFutureOcc(doc.data().futureOcc);
+    setUserSkills(doc.data().skills);
+    setUserCourses(doc.data().courseEnrollments);
+  });
 
   return (
     <DashBoardProject
