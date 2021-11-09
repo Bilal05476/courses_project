@@ -3,11 +3,12 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import "./css/DashContent.css";
 import Button from "@material-ui/core/Button";
+import { NavLink } from "react-router-dom";
 import PublicIcon from "@material-ui/icons/Public";
 import { db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
 
-const CoursePaper = (props) => {
+const EnrollCoursePaper = (props) => {
   const [{ user }] = useStateValue();
 
   // const [courseEnroll, setCourseEnroll] = useState(false);
@@ -20,8 +21,9 @@ const CoursePaper = (props) => {
     });
   }, [user, getUserData]);
 
-  const handleCourseEnroll = (co) => {
-    userCourseEnroll.push(co);
+  const handleCourseUnenroll = (co) => {
+    const unCourse = userCourseEnroll.indexOf(co);
+    userCourseEnroll.splice(unCourse, 1);
     return getUserData
       .update({
         courseEnrollments: userCourseEnroll,
@@ -61,16 +63,29 @@ const CoursePaper = (props) => {
             padding: "1rem",
           }}
         >
-          <Button
-            variant="contained"
-            className="courseBtn text-light "
-            style={{
-              outline: "none",
-            }}
-            onClick={() => handleCourseEnroll(props.courseName)}
-          >
-            Enroll Now
-          </Button>
+          <>
+            <NavLink to={props.courseLink} style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                className="courseBtn text-light"
+                style={{
+                  outline: "none",
+                }}
+              >
+                Launch Course
+              </Button>
+            </NavLink>
+            <Button
+              variant="contained"
+              className="courseBtn text-light ml-2"
+              style={{
+                outline: "none",
+              }}
+              onClick={() => handleCourseUnenroll(props.courseName)}
+            >
+              Unenroll
+            </Button>
+          </>
         </div>
         <div
           className="col-md-12"
@@ -104,4 +119,4 @@ const CoursePaper = (props) => {
   );
 };
 
-export default CoursePaper;
+export default EnrollCoursePaper;

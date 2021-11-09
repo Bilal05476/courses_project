@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import "./css/DashContent.css";
 import CoursePaper from "./CoursePaper";
+import EnrollCoursePaper from "./EnrollCoursePaper";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -92,41 +93,45 @@ export default function HomeTabs({ userCourses }) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className="p-0">
-        <CoursePaper
-          staticC={staticC}
-          level="Beginner level"
-          courseName="Static Website Development"
-          courseDetails="It looks like you missed some important deadlines. Reset your
+        {staticC && react && python && (
+          <p className="text-center">
+            You are enrolled in all courses now! 🙂{" "}
+          </p>
+        )}
+        {!staticC && (
+          <CoursePaper
+            level="Beginner level"
+            courseName="Static Website Development"
+            courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
-          courseLink="/staticwebcourse"
-        />
-        <CoursePaper
-          react={react}
-          level="Intermediate level"
-          courseName="React Website Development"
-          courseDetails="It looks like you missed some important deadlines. Reset your
+          />
+        )}
+        {!react && (
+          <CoursePaper
+            level="Intermediate level"
+            courseName="React Website Development"
+            courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
-          courseLink="/reactwebcourse"
-        />
-        <CoursePaper
-          python={python}
-          level="Beginner level"
-          courseName="Python Programming"
-          courseDetails="It looks like you missed some important deadlines. Reset your
+          />
+        )}
+        {!python && (
+          <CoursePaper
+            level="Beginner level"
+            courseName="Python Programming"
+            courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
-          courseLink="/pythoncourse"
-        />
+          />
+        )}
       </TabPanel>
       <TabPanel value={value} index={1} className="p-0">
         {userCourses.length === 0 && (
           <p className="text-center">
-            Oops, You are not enrolled in any course yet 🙁{" "}
+            Oops, You are not enrolled in any course yet! 🙁{" "}
           </p>
         )}
 
         {staticC && (
-          <CoursePaper
-            staticC={staticC}
+          <EnrollCoursePaper
             level="Beginner level"
             courseName="Static Website Development"
             courseDetails="It looks like you missed some important deadlines. Reset your
@@ -135,8 +140,7 @@ export default function HomeTabs({ userCourses }) {
           />
         )}
         {react && (
-          <CoursePaper
-            react={react}
+          <EnrollCoursePaper
             level="Intermediate level"
             courseName="React Website Development"
             courseDetails="It looks like you missed some important deadlines. Reset your
@@ -145,8 +149,7 @@ export default function HomeTabs({ userCourses }) {
           />
         )}
         {python && (
-          <CoursePaper
-            python={python}
+          <EnrollCoursePaper
             level="Beginner level"
             courseName="Python Programming"
             courseDetails="It looks like you missed some important deadlines. Reset your
