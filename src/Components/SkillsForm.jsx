@@ -10,7 +10,7 @@ const SkillsForm = () => {
   const getUserData = db.collection("users").doc(user.uid);
   const [userSkills, setUserSkills] = useState([]);
   useEffect(() => {
-    return getUserData.get().then((doc) => {
+    return getUserData.onSnapshot((doc) => {
       setUserSkills(doc.data().skills);
     });
   }, [user, getUserData]);

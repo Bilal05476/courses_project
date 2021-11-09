@@ -14,6 +14,7 @@ export default function Dashboard({
   userCurrentOcc,
   userFutureOcc,
   userCourses,
+  userName,
 }) {
   const [{ user }] = useStateValue();
   const [updateCurrent, setUpdateCurrent] = useState("");
@@ -23,14 +24,25 @@ export default function Dashboard({
   const getOccupation = db.collection("users").doc(user.uid);
   const onSubmit = (e) => {
     e.preventDefault();
-    getOccupation.update({
-      currentOcc: updateCurrent,
-      futureOcc: updateFuture,
-    });
-    setDataSMessage("Successfully Updated, Refresh Now! 🙂");
-    setUpdateCurrent("");
-    setUpdateFuture("");
+    return getOccupation
+      .update({
+        currentOcc: updateCurrent,
+        futureOcc: updateFuture,
+      })
+      .then(() => {
+        setDataSMessage(`Successfully Updated! ${userName} 🙂`);
+        setUpdateCurrent("");
+        setUpdateFuture("");
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        alert(`Error! ${error}`);
+      });
   };
+
+  setTimeout(() => {
+    setDataSMessage("");
+  }, 10000);
 
   return (
     <>

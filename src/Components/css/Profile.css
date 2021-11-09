@@ -77,7 +77,12 @@
 .editProButtons.courseBtn {
   border-radius: 30px !important ;
 }
-
+.skillsDeleteBtn {
+  opacity: 0.2;
+}
+.skillsDeleteBtn:hover {
+  opacity: 1;
+}
 @media (max-width: 1024px) {
   .aboutUser {
     flex-direction: column;

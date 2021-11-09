@@ -42,6 +42,7 @@ const DashBoardProject = ({
                       userCurrentOcc={userCurrentOcc}
                       userFutureOcc={userFutureOcc}
                       userCourses={userCourses}
+                      userName={userName}
                     />
                   </div>
                 </Route>

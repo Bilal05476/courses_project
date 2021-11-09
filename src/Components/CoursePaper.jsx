@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import "./css/DashContent.css";
@@ -15,9 +15,14 @@ const CoursePaper = (props) => {
   const getUserData = db.collection("users").doc(user.uid);
   const [userCourseEnroll, setUserCourseEnroll] = useState([]);
 
+  useEffect(() => {
+    return getUserData.onSnapshot((doc) => {
+      setUserCourseEnroll(doc.data().courseEnrollments);
+    });
+  }, [user, getUserData]);
 
   const handleCourseEnroll = (co) => {
-    userCourseEnroll.push(co)
+    userCourseEnroll.push(co);
     return getUserData
       .update({
         courseEnrollments: userCourseEnroll,
@@ -29,7 +34,6 @@ const CoursePaper = (props) => {
         // The document probably doesn't exist.
         alert(`Error! ${error}`);
       });
-    ;
   };
 
   return (

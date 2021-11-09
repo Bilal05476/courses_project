@@ -65,7 +65,7 @@ export default function HomeTabs({ userCourses }) {
         setStaticC(true);
       } else if (userCourses[prop] === "React Website Development") {
         setReact(true);
-      } else if (userCourses[prop] === "Python Development") {
+      } else if (userCourses[prop] === "Python Programming") {
         setPython(true);
       } else {
         setPython(false);
@@ -108,7 +108,7 @@ export default function HomeTabs({ userCourses }) {
         />
         <CoursePaper
           level="Beginner level"
-          courseName="Python Development"
+          courseName="Python Programming"
           courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
           courseLink="/pythoncourse"
@@ -123,7 +123,7 @@ export default function HomeTabs({ userCourses }) {
         {python && (
           <CoursePaper
             level="Beginner level"
-            courseName="Python Development"
+            courseName="Python Programming"
             courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
             courseLink="/pythoncourse"
