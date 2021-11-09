@@ -13,11 +13,23 @@ const CoursePaper = (props) => {
 
   const [courseEnroll, setCourseEnroll] = useState(false);
   const getUserData = db.collection("users").doc(user.uid);
+  const [userCourseEnroll, setUserCourseEnroll] = useState([]);
+
 
   const handleCourseEnroll = (co) => {
-    return getUserData.update({
-      courseEnrollments: co,
-    });
+    userCourseEnroll.push(co)
+    return getUserData
+      .update({
+        courseEnrollments: userCourseEnroll,
+      })
+      .then(() => {
+        setUserCourseEnroll([]);
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        alert(`Error! ${error}`);
+      });
+    ;
   };
 
   return (
