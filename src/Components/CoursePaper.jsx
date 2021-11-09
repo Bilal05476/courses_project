@@ -39,6 +39,22 @@ const CoursePaper = (props) => {
       });
   };
 
+  const handleCourseUnenroll = (co) => {
+    const unCourse = userCourseEnroll.indexOf(co);
+    userCourseEnroll.splice(unCourse, 1);
+    return getUserData
+      .update({
+        courseEnrollments: userCourseEnroll,
+      })
+      .then(() => {
+        setUserCourseEnroll([]);
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        alert(`Error! ${error}`);
+      });
+  };
+
   return (
     <Paper className="my-3">
       <Typography className="p-2 px-4">Course</Typography>
@@ -95,7 +111,7 @@ const CoursePaper = (props) => {
                 style={{
                   outline: "none",
                 }}
-                onClick={() => setCourseEnroll(false)}
+                onClick={() => handleCourseUnenroll(props.courseName)}
               >
                 Unenroll
               </Button>
