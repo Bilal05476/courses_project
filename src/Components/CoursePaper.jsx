@@ -14,7 +14,7 @@ const CoursePaper = (props) => {
   const rd = props.react;
   const [{ user }] = useStateValue();
 
-  const [courseEnroll, setCourseEnroll] = useState(false);
+  // const [courseEnroll, setCourseEnroll] = useState(false);
   const getUserData = db.collection("users").doc(user.uid);
   const [userCourseEnroll, setUserCourseEnroll] = useState([]);
 
