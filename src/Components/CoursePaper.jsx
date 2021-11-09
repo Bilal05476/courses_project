@@ -9,6 +9,9 @@ import { db } from "../Firebase";
 import { useStateValue } from "../StateProvider";
 
 const CoursePaper = (props) => {
+  const py = props.python;
+  const sd = props.staticC;
+  const rd = props.react;
   const [{ user }] = useStateValue();
 
   const [courseEnroll, setCourseEnroll] = useState(false);
@@ -62,9 +65,7 @@ const CoursePaper = (props) => {
             padding: "1rem",
           }}
         >
-          {courseEnroll ? (
-            <div></div>
-          ) : (
+          {!py ? (
             <Button
               variant="contained"
               className="courseBtn text-light "
@@ -75,10 +76,6 @@ const CoursePaper = (props) => {
             >
               Enroll Now
             </Button>
-          )}
-
-          {!courseEnroll ? (
-            <div></div>
           ) : (
             <>
               <NavLink to={props.courseLink} style={{ textDecoration: "none" }}>

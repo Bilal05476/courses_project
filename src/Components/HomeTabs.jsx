@@ -93,6 +93,7 @@ export default function HomeTabs({ userCourses }) {
       </AppBar>
       <TabPanel value={value} index={0} className="p-0">
         <CoursePaper
+          staticC={staticC}
           level="Beginner level"
           courseName="Static Website Development"
           courseDetails="It looks like you missed some important deadlines. Reset your
@@ -100,6 +101,7 @@ export default function HomeTabs({ userCourses }) {
           courseLink="/staticwebcourse"
         />
         <CoursePaper
+          react={react}
           level="Intermediate level"
           courseName="React Website Development"
           courseDetails="It looks like you missed some important deadlines. Reset your
@@ -107,6 +109,7 @@ export default function HomeTabs({ userCourses }) {
           courseLink="/reactwebcourse"
         />
         <CoursePaper
+          python={python}
           level="Beginner level"
           courseName="Python Programming"
           courseDetails="It looks like you missed some important deadlines. Reset your
@@ -120,17 +123,10 @@ export default function HomeTabs({ userCourses }) {
             Oops, You are not enrolled in any course yet 🙁{" "}
           </p>
         )}
-        {python && (
-          <CoursePaper
-            level="Beginner level"
-            courseName="Python Programming"
-            courseDetails="It looks like you missed some important deadlines. Reset your
-                deadlines and get started today."
-            courseLink="/pythoncourse"
-          />
-        )}
+
         {staticC && (
           <CoursePaper
+            staticC={staticC}
             level="Beginner level"
             courseName="Static Website Development"
             courseDetails="It looks like you missed some important deadlines. Reset your
@@ -140,11 +136,22 @@ export default function HomeTabs({ userCourses }) {
         )}
         {react && (
           <CoursePaper
+            react={react}
             level="Intermediate level"
             courseName="React Website Development"
             courseDetails="It looks like you missed some important deadlines. Reset your
                 deadlines and get started today."
             courseLink="/reactwebcourse"
+          />
+        )}
+        {python && (
+          <CoursePaper
+            python={python}
+            level="Beginner level"
+            courseName="Python Programming"
+            courseDetails="It looks like you missed some important deadlines. Reset your
+                deadlines and get started today."
+            courseLink="/pythoncourse"
           />
         )}
       </TabPanel>
